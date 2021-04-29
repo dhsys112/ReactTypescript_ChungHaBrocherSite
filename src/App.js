@@ -9,7 +9,7 @@ import About from 'pages/About';
 import Homes from 'pages/Homes';
 import Rentals from 'pages/Rentals';
 import Contact from 'pages/Contact';
-import Picture from 'pages/Pictures';
+import Pictures from 'pages/Pictures';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -49,7 +49,7 @@ function App() {
         <Route path='/homes' component={Homes} />
         <Route path='/rentals' component={Rentals} />
         <Route path='/contact' component={Contact} />
-        <Route path='/picture' component={Picture} />
+        <Route path='/picture' component={Pictures} />
       </Switch>
       <Footer />
     </>
