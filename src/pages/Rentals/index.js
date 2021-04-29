@@ -1,6 +1,6 @@
 import React from 'react';
 import Hero from 'components/Hero';
-import { SliderDataTwo } from 'data/SliderData';
+import { SliderDataTwo } from 'assets/data/SliderData';
 
 const Rentals = () => {
   return <Hero slides={SliderDataTwo} />;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { Link, useLocation } from 'react-router-dom';
-import { menuData } from 'data/MenuData';
+import { menuData } from 'assets/data/MenuData';
 import { Button } from 'components/common/Button';
-import Bars from 'images/bars.svg';
+import Bars from 'assets/images/bars.svg';
 
 // Nav 전체를 감싸는 wrapper
 const Nav = styled.nav`

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { css } from 'styled-components/macro';
-import { Button } from './Button';
+import { Button } from 'components/common/Button';
 import { IoMdArrowRoundForward } from 'react-icons/io';
 import { IoArrowForward, IoArrowBack } from 'react-icons/io5';
 import { motion, AnimatePresence } from 'framer-motion';

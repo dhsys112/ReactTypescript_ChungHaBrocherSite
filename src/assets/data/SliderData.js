@@ -1,10 +1,10 @@
-import ImageOne from '../images/house-1.jpg';
-import ImageTwo from '../images/house-2.jpg';
-import ImageThree from '../images/house-3.jpg';
-import ImageFour from '../images/house-4.jpg';
-import ImageFive from '../images/slide-1.jpg';
-import ImageSix from '../images/slide-2.jpg';
-import ImageSeven from '../images/slide-3.jpg';
+import ImageOne from 'assets/images/house-1.jpg';
+import ImageTwo from 'assets/images/house-2.jpg';
+import ImageThree from 'assets/images/house-3.jpg';
+import ImageFour from 'assets/images/house-4.jpg';
+import ImageFive from 'assets/images/slide-1.jpg';
+import ImageSix from 'assets/images/slide-2.jpg';
+import ImageSeven from 'assets/images/slide-3.jpg';
 
 export const SliderData = [
   {
