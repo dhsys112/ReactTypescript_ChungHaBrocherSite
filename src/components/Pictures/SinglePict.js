@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { forwardRef,memo } from 'react';
 import styled, { css } from 'styled-components/macro';
 import { motion } from 'framer-motion';
 
@@ -23,10 +23,9 @@ const SingleImage = styled(motion.img)`
   }
 `;
 
-const SinglePicture = ({ Image , IsOdd = true }) => {
-    console.log("Image",Image)
+const SinglePicture = memo(forwardRef(({ Image , IsOdd = true}, ref) => {
   return (
-      <PictureContainer odd = {IsOdd}>
+      <PictureContainer odd = {IsOdd} ref = {ref}>
           <SingleImage
             src={Image.src}
             alt={Image.alt}
@@ -34,9 +33,14 @@ const SinglePicture = ({ Image , IsOdd = true }) => {
             animate='visible'
             exit='exit'
             odd = {IsOdd}
+            data-aos= {IsOdd ? 'fade-right' : 'fade-left' }
+            data-aos-duration='1200'
+            data-aos-delay='100'
+            data-aos-once='true'
+            data-aos-anchor-placement='center bottom'
         />
       </PictureContainer>
   )
-};
+}))
 
 export default SinglePicture;
