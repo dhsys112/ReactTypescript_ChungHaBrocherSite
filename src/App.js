@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Dropdown from 'components/Dropdown';
 import Footer from 'components/Footer';
+import CustomCursor from 'components/CustomCursor';
 import Navbar from 'components/Navbar';
 import GlobalStyle from './globalStyles';
 import { Switch, Route, useLocation } from 'react-router-dom';
@@ -41,6 +42,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <CustomCursor/>
       <Navbar toggle={toggle} />
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Switch>
