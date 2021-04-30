@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled , {css} from 'styled-components';
 import { Button } from 'components/common/Button';
 import ImageOne from 'assets/images/kitchen-1.jpg';
 
 const Section = styled.section`
   background: #000d1a;
-  padding: 12rem 0rem;
+  padding: 8rem 0rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,6 +33,11 @@ const ColumnLeft = styled.div`
   margin: 0px -15px;
   justify-content: flex-start;
   padding: 1rem;
+  ${({IsOdd}) => 
+    IsOdd ? css`justify-content: flex-start` 
+    : 
+    css`justify-content: flex-end`
+  }
 `;
 
 const Content = styled.div`
@@ -41,7 +46,7 @@ const Content = styled.div`
 // 아래의 경우 3 value 에 대해 지정해준 것이다 
 // 이렇게 되면, 브라우저 크기가 클 때는, 이미지가 오른쪽 50% 차지
 // 모두 가로 배치 
-  flex: 0 0 50%;
+  flex: 0 0 50% ;
 
   @media screen and (max-width: 768px) {
     // 이미지가 100% 차지, 세로 배치 
@@ -63,10 +68,16 @@ const Content = styled.div`
 
 const ColumnRight = styled.div`
   position: absolute;
-  top: -80px;
-  right: 0;
+  // top: -80px;
+  top: -10%;
+  ${({IsOdd}) => 
+    IsOdd ? css`right: 0;` 
+    : 
+    css`left: 0;`
+    }
+  
   max-width: 850px;
-  height: 140%;
+  height: 120%;
   width: 45%;
   padding-left: 1rem;
 
@@ -83,18 +94,20 @@ const Image = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
+  border-radius : 5px;
 `;
 
-const Features = () => {
+const Features = ({IsOdd}) => {
+  console.log("isOdd")
   return (
     <Section>
       <Container>
         <Wrap>
-          <ColumnLeft>
+          <ColumnLeft IsOdd = {IsOdd}>
             <Content
-              data-aos='fade-right'
+              data-aos= {IsOdd ? 'fade-left' : 'fade-right'}
               data-aos-duration='1200'
-              data-aos-delay='300'
+              data-aos-delay='200'
               data-aos-once='true'
               data-aos-anchor-placement='center bottom'
             >
@@ -111,10 +124,10 @@ const Features = () => {
               <Button to='/homes'>Learn More</Button>
             </Content>
           </ColumnLeft>
-          <ColumnRight>
+          <ColumnRight IsOdd = {IsOdd} >
             <Image
               src={ImageOne}
-              data-aos='fade-left'
+              data-aos= {IsOdd ? 'fade-left' : 'fade-right'}
               data-aos-duration='1200'
               data-aos-once='true'
               data-aos-anchor-placement='center bottom'
