@@ -11,12 +11,6 @@ import Albums from 'pages/Albums';
 import SingleAlbum from 'pages/Albums/SingleAlbum';
 import Contact from 'pages/Contact';
 import Pictures from 'pages/Pictures';
-import { 
-  AlbumsLength,
-  MakeCommonAlbumIds,
-  AlbumIntroDatas,
-  SingleAlbumDatas
-} from 'assets/data/AlbumData.js'
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
@@ -41,8 +35,6 @@ function App() {
 
   useEffect(() => {
     Aos.init({});
-    // Data Id Setting
-    MakeCommonAlbumIds(AlbumsLength, AlbumIntroDatas, SingleAlbumDatas)
   }, []);
 
   return (
