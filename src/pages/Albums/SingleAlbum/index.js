@@ -1,0 +1,28 @@
+import React from 'react';
+import Hero from 'components/common/Hero';
+import InfoSection from 'components/common/InfoSection';
+import Video from 'components/Video';
+import {SingleAlbumDatas} from 'assets/data/AlbumData'
+
+const SingleAlbumPageContainer = ({match}) => {
+    let {albumId} = match.params 
+    let album = SingleAlbumDatas.filter((album) => album.id == albumId)[0]
+    let albumInfo = {
+        heading      : album.title ,
+        paragraphOne : album.paragraphOne ,
+        paragraphTwo : album.paragraphTwo ,
+        buttonLabel  : 'View HomePage',
+        image        : album.images[0].image,
+        reverse      : album.id % 2 ? true : false ,
+        delay        : 100
+    }
+    return (
+        <>
+            <Hero slides={album.images} />;
+            <InfoSection {...albumInfo} />
+            <Video videoId = 'tkBAvP85jvc'/>
+        </>
+    ) 
+};
+
+export default SingleAlbumPageContainer;

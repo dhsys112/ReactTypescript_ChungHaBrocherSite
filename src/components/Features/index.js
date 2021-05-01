@@ -4,7 +4,8 @@ import { Button } from 'components/common/Button';
 import ImageOne from 'assets/images/kitchen-1.jpg';
 
 const Section = styled.section`
-  background: #000d1a;
+  // background: #000d1a;
+  background: rgba(154, 18, 179, 0.5);
   padding: 8rem 0rem;
   display: flex;
   flex-direction: column;
@@ -21,6 +22,7 @@ const Wrap = styled.div`
   max-width: 1200px;
   margin: 0 auto;
 `;
+
 
 const ColumnLeft = styled.div`
   // flex-wrap : flex-item 요소들이 강제로 한줄에

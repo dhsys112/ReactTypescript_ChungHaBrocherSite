@@ -7,20 +7,16 @@ export default function GetPictureData(pictureNum) {
     const [curPictNum, setCurPictNum] = useState(0)
     const [hasMore, setHasMore]   = useState(false)
     const PictureDatasLength = PictureDatas.length - 1
-    console.log("PictureDatasLength",PictureDatasLength)
-
-    console.log("part of PictureDatas",PictureDatas.slice(curPictNum,pictureNum))
     
     useEffect(() => {
         pictureNum = pictureNum > PictureDatasLength ? PictureDatasLength : pictureNum
-        console.log("pictureNum",pictureNum)
-        setLoading(true)
+        // setLoading(true)
         setPictures(prevPicts => {
             return [...prevPicts, ...PictureDatas.slice(curPictNum, pictureNum)]
         })
         setHasMore(PictureDatas.slice(curPictNum,pictureNum).length > 0 )
         setCurPictNum(pictureNum)
-        setLoading(false)
+        // setLoading(false)
     },[pictureNum])
     
     

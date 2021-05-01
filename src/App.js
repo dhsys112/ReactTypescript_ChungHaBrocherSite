@@ -1,24 +1,28 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Dropdown from 'components/Dropdown';
 import Footer from 'components/Footer';
-import CustomCursor from 'components/CustomCursor';
+import CustomCursor from 'components/common/CustomEffect/CustomCursor';
 import Navbar from 'components/Navbar';
 import GlobalStyle from './globalStyles';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import Home from 'pages/Home';
 import About from 'pages/About';
-import Homes from 'pages/Homes';
-import Rentals from 'pages/Rentals';
+import Albums from 'pages/Albums';
+import SingleAlbum from 'pages/Albums/SingleAlbum';
 import Contact from 'pages/Contact';
 import Pictures from 'pages/Pictures';
+import { 
+  AlbumsLength,
+  MakeCommonAlbumIds,
+  AlbumIntroDatas,
+  SingleAlbumDatas
+} from 'assets/data/AlbumData.js'
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-
-  console.log(location.pathname);
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -37,6 +41,8 @@ function App() {
 
   useEffect(() => {
     Aos.init({});
+    // Data Id Setting
+    MakeCommonAlbumIds(AlbumsLength, AlbumIntroDatas, SingleAlbumDatas)
   }, []);
 
   return (
@@ -48,10 +54,11 @@ function App() {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/about' component={About} />
-        <Route path='/homes' component={Homes} />
-        <Route path='/rentals' component={Rentals} />
+        <Route path='/albums' component={Albums} />
+        <Route path='/album/:albumId' component={SingleAlbum} />
+        {/*<Route path='/rentals' component={Rentals} />*/}
         <Route path='/contact' component={Contact} />
-        <Route path='/picture' component={Pictures} />
+        <Route path='/pictures' component={Pictures} />
       </Switch>
       <Footer />
     </>

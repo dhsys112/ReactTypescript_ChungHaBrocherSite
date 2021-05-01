@@ -2,11 +2,12 @@ import {useRef , useEffect } from 'react';
 import styled from 'styled-components/macro';
 
 const CursorComp = styled.div`
-    z-index : 1000;
+    z-index : 100;
     border-radius: 50%;
-    width : 30px ;
-    height : 30px;
+    width : 10px ;
+    height : 10px;
     border : 2px solid grey;
+    background-color : grey;
     pointer-events : none;
     overflow : hidden;
     transform : translateY(0,0,0);
@@ -14,10 +15,10 @@ const CursorComp = styled.div`
     position : fixed;
 `
 const CursorCompFollow = styled.div`
-    z-index : 1000;
+    z-index : 100;
     border-radius: 50%;
-    width : 50px ;
-    height : 50px;
+    width : 30px ;
+    height : 30px;
     border : 2px solid darkgray;
     pointer-events : none;
     overflow : hidden;
@@ -29,14 +30,18 @@ const CursorCompFollow = styled.div`
 const CustomCursor = () => {
     const cursorRef = useRef(null);
     const cursorRefFollow = useRef(null);
-    useEffect(() => {
-        document.addEventListener('mousemove', event => {
+    const cursorPosChange = (event) => {
             const {clientX, clientY} = event;
             const mouseX = clientX - cursorRef.current.clientWidth / 2;
             const mouseY = clientY - cursorRef.current.clientHeight / 2;
             cursorRef.current.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-            cursorRefFollow.current.style.transform = `translate3d(${mouseX}px + 50%, ${mouseY}px - 50%, 0)`;
-        })
+            cursorRefFollow.current.style.transform = `translate3d(${mouseX-10}px , ${mouseY-10}px , 0)`;
+    }
+    useEffect(() => {
+        document.addEventListener('mousemove', cursorPosChange)
+        return () => {
+            document.removeEventListener('mousemove', cursorPosChange);
+          };
     },[])
 
     return(
