@@ -1,42 +1,20 @@
-import ImageOne from 'assets/images/house-1.jpg';
-import ImageTwo from 'assets/images/house-2.jpg';
-import ImageThree from 'assets/images/house-3.jpg';
-import ImageFour from 'assets/images/house-4.jpg';
-import ImageFive from 'assets/images/slide-1.jpg';
-import ImageSix from 'assets/images/slide-2.jpg';
-import ImageSeven from 'assets/images/slide-3.jpg';
-
-let i = 0
-export const PictureDatas = [
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i++, src: ImageThree, alt: '/rentals' },
-    { idx : i++, src: ImageOne, alt: '/about' },
-    { idx : i++, src: ImageTwo, alt: '/homes' },
-    { idx : i, src: ImageThree, alt: '/rentals' }
-  ];
-  
+import {IMAGES_DATA} from 'assets/images'
+export const PictureDatas = (function () { 
+  let arr = []
+  let dataIdx = 0
+  for(let i = 1 ; i <= 6 ; i++ ){
+      for(let j = 1 ; j <= 3; j++){
+          let Img = require(`assets/images/${i}_${j}.png`).default
+          let Route,Idx   = `/album/${i-1}`,dataIdx 
+          dataIdx += 1 
+          let PictureData = {idx : Idx,src:Img,alt:Route}
+          arr.push(PictureData)
+      }
+  }
+  // shuffle Array
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr
+})()
