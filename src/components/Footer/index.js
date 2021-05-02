@@ -81,7 +81,7 @@ const SocialIcons = styled.div`
 const Icons = css`
   font-size: clamp(1rem, 6vw, 2rem);
   margin-right: 1.5rem;
-  color: #cd853f;
+  color: #353866;
 `;
 
 const Instagram = styled(FaInstagram)`
@@ -119,7 +119,7 @@ const Footer = () => {
         <FooterTop>
           <Quote>
             <h3>
-              Let's find <br /> your Dream Home
+              ChungHa <br /> Into Site
             </h3>
           </Quote>
           <FooterInfo>
@@ -128,48 +128,43 @@ const Footer = () => {
             <Link to='/homes'>Support</Link>
             <Link to='/homes'>Questions</Link>
           </FooterInfo>
-          <FooterInfo>
-            <h4>Offices</h4>
-            <Link to='/homes'>United States</Link>
-            <Link to='/homes'>Europe</Link>
-            <Link to='/homes'>Canada</Link>
-          </FooterInfo>
+          
         </FooterTop>
         <FooterBottom>
           <SocialIcons>
             <a
-              href='//www.google.com'
+              href='https://www.youtube.com/user/CJENMMUSIC'
               rel='noopener noreferrer'
               target='_blank'
             >
               <Youtube />
             </a>
             <a
-              href='//www.google.com'
+              href='https://www.instagram.com/chungha_official/'
               rel='noopener noreferrer'
               target='_blank'
             >
               <Instagram />
             </a>
-            <a
+            {/* <a
               href='//www.google.com'
               rel='noopener noreferrer'
               target='_blank'
             >
               <Facebook />
-            </a>
-            <a
+            </a> */}
+            {/* <a
               href='//www.google.com'
               rel='noopener noreferrer'
               target='_blank'
             >
               <LinkedIn />
-            </a>
+            </a> */}
           </SocialIcons>
           <Contact>
-            <Button to='/homes'>
-              Let's Chat <IoMdArrowRoundForward />
-            </Button>
+            {/*<Button to='/homes'>
+              Main Site <IoMdArrowRoundForward />
+          </Button>*/}
           </Contact>
         </FooterBottom>
       </Container>

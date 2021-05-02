@@ -6,7 +6,7 @@ import Navbar from 'components/Navbar';
 import GlobalStyle from './globalStyles';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import Home from 'pages/Home';
-import About from 'pages/About';
+import About from 'pages/HitSongs';
 import Albums from 'pages/Albums';
 import SingleAlbum from 'pages/Albums/SingleAlbum';
 import Contact from 'pages/Contact';
@@ -45,7 +45,7 @@ function App() {
       <Dropdown isOpen={isOpen} toggle={toggle} />
       <Switch>
         <Route path='/' exact component={Home} />
-        <Route path='/about' component={About} />
+        <Route path='/hitSongs' component={About} />
         <Route path='/albums' component={Albums} />
         <Route path='/album/:albumId' component={SingleAlbum} />
         {/*<Route path='/rentals' component={Rentals} />*/}

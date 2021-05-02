@@ -11,7 +11,7 @@ const DropdownContainer = styled.div`
   z-index: 999;
   width: 100%;
   height: 100%;
-  background: #cd853f;
+  background: #353866;
   display: grid;
   align-items: center;
   top: 0;
@@ -89,9 +89,9 @@ const Dropdown = ({ isOpen, toggle }) => {
           ))}
         </DropdownMenu>
         <BtnWrap>
-          <Button primary='true' round='true' big='true' to='/contact'>
-            Contact Us
-          </Button>
+          {/* <Button primary='true' round='true' big='true' to='/contact'>
+            Main Site
+          </Button> */}
         </BtnWrap>
       </DropdownWrapper>
     </DropdownContainer>

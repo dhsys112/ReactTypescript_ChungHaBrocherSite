@@ -20,7 +20,7 @@ const SingleAlbumPageContainer = ({match}) => {
         <>
             <Hero slides={album.images} />;
             <InfoSection {...albumInfo} />
-            <Video videoId = 'tkBAvP85jvc'/>
+            <Video videoId = {album.videoId}/>
         </>
     ) 
 };

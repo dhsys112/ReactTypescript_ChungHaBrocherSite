@@ -111,13 +111,13 @@ const Navbar = ({ toggle }) => {
   // NavBar 가 Home Page일때만 다르게 style
   let style = {
     backgroundColor:
-      navbar || location.pathname !== '/' ? '#CD853F' : 'transparent',
+      navbar || location.pathname !== '/' ? '#353866' : 'transparent',
     transition: '0.4s'
   };
 
   return (
     <Nav style={style}>
-      <Logo to='/'>ELIXR</Logo>
+      <Logo to='/'>CHUNGHA</Logo>
       <MenuBars onClick={toggle} />
       <NavMenu>
         {menuData.map((item, index) => (
@@ -127,9 +127,9 @@ const Navbar = ({ toggle }) => {
         ))}
       </NavMenu>
       <NavBtn>
-        <Button to='/contact' primary='true'>
+        {/* <Button to='/contact' primary='true'>
           Contact Us
-        </Button>
+        </Button> */}
       </NavBtn>
     </Nav>
   );

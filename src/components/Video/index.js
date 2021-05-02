@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import styled, { css } from 'styled-components/macro';
+import StyledFrame from 'react-iframe'
 import YouTube from 'react-youtube';
 import {HeroSection,HeroWrapper,HeroSlide} from 'components/common/Hero'
 
@@ -30,12 +31,19 @@ const Video = memo(({videoId}) => {
             <VideoWrapper>
                 <VideoSlide >
                     <VideoSlider>
-                        <YouTube
+                      <YoutubeDiv>
+                        <YoutubeIframe
+                          url={`https://www.youtube.com/embed/${videoId}`}
+                          frameBorder="0"
+                          autoplay = {1}
+                        />
+                      </YoutubeDiv>
+                        {/* <YouTube
                             videoId={videoId}
                             opts={opts} 
                             onReady={videoOnReady} 
                             onPlay={videoOnPlay}
-                        />;
+                        />; */}
                     </VideoSlider>
                 </VideoSlide>
             </VideoWrapper>
@@ -53,7 +61,7 @@ const VideoWrapper = styled(HeroWrapper)``
 const VideoSlide = styled(HeroSlide)``
 
 // 일부 slide 에 대한 Slide
-const VideoSlider = memo(styled.div`
+const VideoSlider = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -64,6 +72,26 @@ const VideoSlider = memo(styled.div`
   justify-content: center;
   // 위에 까지는, 하나의 화면이 다 차게끔 하는 것이었다 
   // 아래는 , 해당 image 위에 overlay를 더하는 과정이다 
-`);
+`;
+
+// Youtube Video Wrapper
+const YoutubeDiv = styled.div`
+    position: relative;
+    padding-bottom: 56.25% /* 16:9 */;
+    padding-top: 25;
+    width: 100%;
+    height: 100%;
+`;
+
+// Youtube Iframe
+const YoutubeIframe = styled(StyledFrame)`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 5px;
+    width: 70%;
+    height: 70%;
+`;
 
 export default Video;

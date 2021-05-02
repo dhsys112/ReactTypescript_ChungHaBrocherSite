@@ -256,7 +256,7 @@ const arrowButtons = css`
   transition: 0.3s;
 
   &:hover {
-    background: #cd853f;
+    background: #353866;
     transform: scale(1.05);
   }
 `;

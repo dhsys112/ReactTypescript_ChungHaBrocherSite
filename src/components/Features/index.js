@@ -5,8 +5,8 @@ import ImageOne from 'assets/images/kitchen-1.jpg';
 
 const Section = styled.section`
   // background: #000d1a;
-  background: rgba(154, 18, 179, 0.5);
-  padding: 8rem 0rem;
+  background: #AAABD3;
+  padding: 6rem 0rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,7 @@ const Section = styled.section`
 
 const Container = styled.div`
   background: #fff;
-  padding: 3rem 2rem;
+  padding: 2rem 2rem;
   position: relative;
 `;
 
@@ -49,6 +49,7 @@ const Content = styled.div`
 // 이렇게 되면, 브라우저 크기가 클 때는, 이미지가 오른쪽 50% 차지
 // 모두 가로 배치 
   flex: 0 0 50% ;
+  font-size: 1rem;
 
   @media screen and (max-width: 768px) {
     // 이미지가 100% 차지, 세로 배치 
@@ -95,12 +96,11 @@ const ColumnRight = styled.div`
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius : 5px;
 `;
 
-const Features = ({IsOdd}) => {
-  console.log("isOdd")
+const Features = ({IsOdd,img,year,song,paragraph1,paragraph2}) => {
   return (
     <Section>
       <Container>
@@ -113,22 +113,17 @@ const Features = ({IsOdd}) => {
               data-aos-once='true'
               data-aos-anchor-placement='center bottom'
             >
-              <h1>Stunning Interior</h1>
+              <h1>{song}</h1>
               <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Deserunt maxime commodi rem dignissimos, laborum eum beatae
-                harum consectetur possimus architecto!
+                {year}
               </p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                voluptatem.
-              </p>
+              
               <Button to='/homes'>Learn More</Button>
             </Content>
           </ColumnLeft>
           <ColumnRight IsOdd = {IsOdd} >
             <Image
-              src={ImageOne}
+              src={img}
               data-aos= {IsOdd ? 'fade-left' : 'fade-right'}
               data-aos-duration='1200'
               data-aos-once='true'

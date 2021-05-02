@@ -64,6 +64,7 @@ export const SingleAlbumDatas = [
     {
         id : undefined,
         order : undefined ,
+        videoId : 'EHgeGRU3wDI',
         title: '1st Mini Album [Hands on Me]',
         song : 'Why Don\'t You Know',
         year:'2017.06.07',
@@ -74,26 +75,26 @@ export const SingleAlbumDatas = [
         performanceVideo : '<iframe width="560" height="315" src="https://www.youtube.com/embed/By9-Lqn5358" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         images : [
             {
-                title: 'Luxury Villa in Bali, Indonesia',
-                price: '$4,280,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageOne',
+                price: '$2,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in San Jose, Costa Rica',
+                title: 'ImageTwo',
                 price: '$2,860,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in Calabasas, California',
+                title: 'ImageThree',
                 price: '$8,420,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 }
@@ -102,6 +103,7 @@ export const SingleAlbumDatas = [
     {
         id : undefined,
         order : undefined ,
+        videoId :'CsgH_0y6gkE',
         title: '2nd Mini Album [Offset]',
         song : 'Roller Coaster',
         year:'2018.01.17',
@@ -112,26 +114,26 @@ export const SingleAlbumDatas = [
         performanceVideo : '<iframe width="560" height="315" src="https://www.youtube.com/embed/By9-Lqn5358" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         images : [
             {
-                title: 'Luxury Villa in Bali, Indonesia',
-                price: '$4,280,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageOne',
+                price: '$2,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in San Jose, Costa Rica',
+                title: 'ImageTwo',
                 price: '$2,860,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in Calabasas, California',
+                title: 'ImageThree',
                 price: '$8,420,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 }
@@ -140,6 +142,7 @@ export const SingleAlbumDatas = [
     {
         id : undefined,
         order : undefined ,
+        videoId : 'SxhPskMuhus',
         title: '4th Mini Album [Flourishing]',
         song : 'Snapping',
         year: '2019.06.24',
@@ -150,26 +153,26 @@ export const SingleAlbumDatas = [
         performanceVideo : '<iframe width="560" height="315" src="https://www.youtube.com/embed/By9-Lqn5358" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         images : [
             {
-                title: 'Luxury Villa in Bali, Indonesia',
-                price: '$4,280,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageOne',
+                price: '$2,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in San Jose, Costa Rica',
+                title: 'ImageTwo',
                 price: '$2,860,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in Calabasas, California',
+                title: 'ImageThree',
                 price: '$8,420,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 }
@@ -178,6 +181,7 @@ export const SingleAlbumDatas = [
     {
         id : undefined,
         order : undefined ,
+        videoId : 'YPFIh0dfYfw',
         title: 'Pre-Release Single #1',
         song : 'Stay Tonight',
         year : '2020.04.27',
@@ -189,26 +193,26 @@ export const SingleAlbumDatas = [
         performanceVideo : '<iframe width="560" height="315" src="https://www.youtube.com/embed/By9-Lqn5358" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         images : [
             {
-                title: 'Luxury Villa in Bali, Indonesia',
-                price: '$4,280,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageOne',
+                price: '$2,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in San Jose, Costa Rica',
+                title: 'ImageTwo',
                 price: '$2,860,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in Calabasas, California',
+                title: 'ImageThree',
                 price: '$8,420,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 }
@@ -217,6 +221,7 @@ export const SingleAlbumDatas = [
     {
         id : undefined,
         order : undefined ,
+        videoId : 'jPFrHYXYxak',
         title: 'Pre-Release Single #2',
         song : 'Play',
         year: '2020.07.06',
@@ -226,26 +231,26 @@ export const SingleAlbumDatas = [
         performanceVideo : '<iframe width="560" height="315" src="https://www.youtube.com/embed/By9-Lqn5358" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         images : [
             {
-                title: 'Luxury Villa in Bali, Indonesia',
-                price: '$4,280,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageOne',
+                price: '$2,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in San Jose, Costa Rica',
+                title: 'ImageTwo',
                 price: '$2,860,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in Calabasas, California',
+                title: 'ImageThree',
                 price: '$8,420,000',
-                path: '/homes',
-                label: 'View Home',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 }
@@ -254,6 +259,7 @@ export const SingleAlbumDatas = [
     {
         id : undefined,
         order : undefined ,
+        videoId : 'tkBAvP85jvc' ,
         title: '청하, R3HAB Collaboration Single',
         song : 'Dream of You',
         year: '2020.11.27',
@@ -265,26 +271,26 @@ export const SingleAlbumDatas = [
         performanceVideo : '<iframe width="560" height="315" src="https://www.youtube.com/embed/By9-Lqn5358" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
         images : [
             {
-                title: 'Luxury Villa in Bali, Indonesia',
-                price: '$4,280,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageOne',
+                // price: '$2,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in San Jose, Costa Rica',
-                price: '$2,860,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageTwo',
+                // price: '$2,860,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 },
                 {
-                title: 'House in Calabasas, California',
-                price: '$8,420,000',
-                path: '/homes',
-                label: 'View Home',
+                title: 'ImageThree',
+                // price: '$8,420,000',
+                path: '/hitSongs',
+                label: 'View Song',
                 image: undefined,
                 alt: 'House'
                 }
