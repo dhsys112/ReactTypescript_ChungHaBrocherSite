@@ -1,7 +1,17 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Button } from 'components/common/Button';
+import React from "react";
+import styled from "styled-components";
+import { Button } from "components/common/Button";
+import { ImageInfoType } from "assets/data/types";
 
+interface InfoSectionProps {
+  heading: string;
+  paragraphOne: string;
+  paragraphTwo: string;
+  buttonLabel: string;
+  reverse: boolean;
+  image: string;
+  delay: number;
+}
 
 const InfoSection = ({
   heading,
@@ -10,36 +20,36 @@ const InfoSection = ({
   buttonLabel,
   reverse,
   image,
-  delay
-}) => {
+  delay,
+}: InfoSectionProps) => {
   return (
     <Section>
       <Container>
         <ColumnLeft
           reverse={reverse}
-          data-aos='fade-up'
-          data-aos-duration='1000'
-          // once : 딱 한번만 실행되게 하기 
-          data-aos-once='true'
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          // once : 딱 한번만 실행되게 하기
+          data-aos-once="true"
           data-aos-delay={delay}
-          data-aos-anchor-placement='center bottom'
+          data-aos-anchor-placement="center bottom"
         >
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to='/homes' primary='true'>
-            {buttonLabel ? buttonLabel : ''}
+          <Button to="/homes" primary={true}>
+            {buttonLabel ? buttonLabel : ""}
           </Button>
         </ColumnLeft>
         <ColumnRight reverse={reverse}>
           <img
             src={image}
-            alt='home'
-            data-aos='zoom-out'
-            data-aos-duration='1000'
-            data-aos-once='true'
+            alt="home"
+            data-aos="zoom-out"
+            data-aos-duration="1000"
+            data-aos-once="true"
             data-aos-delay={delay}
-            data-aos-anchor-placement='center bottom'
+            data-aos-anchor-placement="center bottom"
           />
         </ColumnRight>
       </Container>
@@ -64,14 +74,17 @@ const Container = styled.div`
   }
 `;
 
-const ColumnLeft = styled.div`
+interface ColumnProps {
+  reverse: boolean;
+}
+const ColumnLeft = styled.div<ColumnProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   line-height: 1.4;
   padding: 1rem 2rem;
-  order: ${({ reverse }) => (reverse ? '2' : '1')};
+  order: ${({ reverse }) => (reverse ? "2" : "1")};
 
   h1 {
     margin-bottom: 1rem;
@@ -83,15 +96,15 @@ const ColumnLeft = styled.div`
   }
 `;
 
-const ColumnRight = styled.div`
+const ColumnRight = styled.div<ColumnProps>`
   padding: 1rem 2rem;
-  order: ${({ reverse }) => (reverse ? '1' : '2')};
+  order: ${({ reverse }) => (reverse ? "1" : "2")};
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media screen and (max-width: 768px) {
-    order: ${({ reverse }) => (reverse ? '2' : '1')};
+    order: ${({ reverse }) => (reverse ? "2" : "1")};
   }
 
   img {
@@ -105,6 +118,5 @@ const ColumnRight = styled.div`
     }
   }
 `;
-
 
 export default InfoSection;

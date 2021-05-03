@@ -1,13 +1,14 @@
 import {IMAGES_DATA} from 'assets/images'
+
 export const PictureDatas = (function () { 
   let arr = []
-  let dataIdx = 0
+  let dataIdx : number = 0
   for(let i = 1 ; i <= 6 ; i++ ){
       for(let j = 1 ; j <= 3; j++){
           let Img = require(`assets/images/${i}_${j}.png`).default
-          let Route,Idx   = `/album/${i-1}`,dataIdx 
+          let Route   = `/album/${i-1}`
           dataIdx += 1 
-          let PictureData = {idx : Idx,src:Img,alt:Route}
+          let PictureData = {idx : dataIdx, src:Img, alt:Route}
           arr.push(PictureData)
       }
   }

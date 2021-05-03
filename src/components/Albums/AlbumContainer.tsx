@@ -1,16 +1,20 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import { IoMdArrowRoundForward } from 'react-icons/io';
-import OneAlbum from './OneAlbum'
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { IoMdArrowRoundForward } from "react-icons/io";
+import OneAlbum from "./OneAlbum";
+import { AlbumIntroDataType } from "assets/data/types";
 
-const AlbumContainer = ({datas}) => {
-  let DataOne = datas[0]
-  let DataTwo = datas[1]
+interface AlbumContainerProp {
+  datas: Array<AlbumIntroDataType>;
+}
+const AlbumContainer = ({ datas }: AlbumContainerProp) => {
+  let DataOne = datas[0];
+  let DataTwo = datas[1];
   return (
     <InfoRow>
-        <OneAlbum AlbumData = {DataOne} first = {true}/>
-        <OneAlbum AlbumData = {DataTwo} first = {false}/>
+      <OneAlbum AlbumData={DataOne} first={true} />
+      <OneAlbum AlbumData={DataTwo} first={false} />
     </InfoRow>
   );
 };

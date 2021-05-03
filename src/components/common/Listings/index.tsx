@@ -1,57 +1,53 @@
-import React from 'react';
-import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import { IoMdArrowRoundForward } from 'react-icons/io';
+import React from "react";
+import styled, { css } from "styled-components/macro";
+import { Link } from "react-router-dom";
+import { IoMdArrowRoundForward } from "react-icons/io";
+import { ImageInfoType } from "assets/data/types";
 
-const Listings = ({datas}) => {
-  let DataOne = datas[0]
-  let DataTwo = datas[1]
+interface ListingsProps {
+  datas: Array<ImageInfoType>;
+}
+
+const Listings = ({ datas }: ListingsProps) => {
+  let DataOne = datas[0];
+  let DataTwo = datas[1];
   return (
     <Section>
       <Container>
         <Heading>
           <h1
-            data-aos='fade-right'
-            data-aos-duration='1000'
-            data-aos-once='true'
-            data-aos-anchor-placement='center bottom'
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-once="true"
+            data-aos-anchor-placement="center bottom"
           >
             View Albums
           </h1>
         </Heading>
         <InfoRow>
           <InfoWrap
-            data-aos='zoom-out-up'
-            data-aos-duration='1200'
-            data-aos-once='true'
-            data-aos-anchor-placement='center bottom'
+            data-aos="zoom-out-up"
+            data-aos-duration="1200"
+            data-aos-once="true"
+            data-aos-anchor-placement="center bottom"
           >
-            <Image src={DataOne.image} alt='home' />
+            <Image src={DataOne.image} alt="home" />
             <h2>{DataOne.title}</h2>
-            <InfoLink to='/homes'>
+            <InfoLink to="/homes">
               <p>View Details</p>
               <Arrow />
             </InfoLink>
           </InfoWrap>
           <InfoWrap
-            data-aos='zoom-out-down'
-            data-aos-duration='1200'
-            data-aos-once='true'
-            data-aos-anchor-placement='center bottom'
+            data-aos="zoom-out-down"
+            data-aos-duration="1200"
+            data-aos-once="true"
+            data-aos-anchor-placement="center bottom"
           >
             {/* 살짝 위로 올려준다  */}
-            <Image
-              src={DataTwo.image}
-              alt='home'
-              css={`
-                margin-top: 120px;
-                @media screen and (max-width: 768px) {
-                  margin-top: 0px;
-                }
-              `}
-            />
+            <Image src={DataTwo.image} alt="home" IsUp={true} />
             <h2>{DataTwo.title}</h2>
-            <InfoLink to='/homes'>
+            <InfoLink to="/homes">
               <p>View Details</p>
               <Arrow />
             </InfoLink>
@@ -61,7 +57,6 @@ const Listings = ({datas}) => {
     </Section>
   );
 };
-
 
 const Section = styled.section`
   width: 100%;
@@ -110,17 +105,28 @@ const InfoWrap = styled.div`
   }
 `;
 
-const Image = styled.img`
+interface ListingImageProps {
+  IsUp?: boolean;
+}
+const Image = styled.img<ListingImageProps>`
   width: 100%;
   height: 100%;
   max-width: 600px;
   max-height: 400px;
   object-fit: cover;
   margin-bottom: 1rem;
-  &:hover{
+  &:hover {
     transition: all 0.5s ease-in-out;
-    transform : scale(1.05); 
+    transform: scale(1.05);
   }
+  ${({ IsUp }) =>
+    IsUp &&
+    css`
+      margin-top: 120px;
+      @media screen and (max-width: 768px) {
+        margin-top: 0px;
+      }
+    `}
 `;
 
 const InfoLink = styled(Link)`

@@ -54,5 +54,9 @@
   },
   "babelMacros": {
     "styledComponents": {}
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.3",
+    "@types/styled-components": "^5.1.9"
   }
 }

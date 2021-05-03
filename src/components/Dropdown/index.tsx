@@ -1,12 +1,45 @@
-import React from 'react';
-import styled from 'styled-components';
-import { menuData } from 'assets/data/MenuData';
-import { Button } from 'components/common/Button';
-import { Link } from 'react-router-dom';
-import { FaTimes } from 'react-icons/fa';
+import React from "react";
+import styled from "styled-components";
+import { menuData } from "assets/data/MenuData";
+import { Button } from "components/common/Button";
+import { Link } from "react-router-dom";
+import { FaTimes } from "react-icons/fa";
 
-// isOpen 이라는 state 에 따라서, 열고 닫고 조절 
-const DropdownContainer = styled.div`
+interface DropdownProps {
+  isOpen: boolean;
+  toggle: () => void;
+}
+
+const Dropdown = ({ isOpen, toggle }: DropdownProps) => {
+  // isOpen, toggle 함수를 통해, 해당 요소 열고 닫고 조절
+  return (
+    <DropdownContainer isOpen={isOpen} onClick={toggle}>
+      <Icon onClick={toggle}>
+        <CloseIcon />
+      </Icon>
+      <DropdownWrapper>
+        <DropdownMenu>
+          {menuData.map((item, index) => (
+            <DropdownLink to={item.link} key={index}>
+              {item.title}
+            </DropdownLink>
+          ))}
+        </DropdownMenu>
+        <BtnWrap>
+          {/* <Button primary='true' round='true' big='true' to='/contact'>
+            Main Site
+          </Button> */}
+        </BtnWrap>
+      </DropdownWrapper>
+    </DropdownContainer>
+  );
+};
+
+// isOpen 이라는 state 에 따라서, 열고 닫고 조절
+interface DropdownContainerProps {
+  isOpen: boolean;
+}
+const DropdownContainer = styled.div<DropdownContainerProps>`
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -17,9 +50,9 @@ const DropdownContainer = styled.div`
   top: 0;
   left: 0;
   transition: 0.3s ease-in-out;
-  opacity: ${({ isOpen }) => (isOpen ? '1' : '0')};
-  // isOpen이 아닐때에는, 위에 있다가, 내려오는 개념 
-  top: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
+  opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+  // isOpen이 아닐때에는, 위에 있다가, 내려오는 개념
+  top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
 `;
 
 const Icon = styled.div`
@@ -50,7 +83,7 @@ const DropdownMenu = styled.div`
   }
 `;
 
-// About, Homes, Rentals 등의 이동 링크 버튼들 
+// About, Homes, Rentals 등의 이동 링크 버튼들
 const DropdownLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -72,30 +105,5 @@ const BtnWrap = styled.div`
   display: flex;
   justify-content: center;
 `;
-
-const Dropdown = ({ isOpen, toggle }) => {
-  // isOpen, toggle 함수를 통해, 해당 요소 열고 닫고 조절 
-  return (
-    <DropdownContainer isOpen={isOpen} onClick={toggle}>
-      <Icon onClick={toggle}>
-        <CloseIcon />
-      </Icon>
-      <DropdownWrapper>
-        <DropdownMenu>
-          {menuData.map((item, index) => (
-            <DropdownLink to={item.link} key={index}>
-              {item.title}
-            </DropdownLink>
-          ))}
-        </DropdownMenu>
-        <BtnWrap>
-          {/* <Button primary='true' round='true' big='true' to='/contact'>
-            Main Site
-          </Button> */}
-        </BtnWrap>
-      </DropdownWrapper>
-    </DropdownContainer>
-  );
-};
 
 export default Dropdown;

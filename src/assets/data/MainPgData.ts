@@ -100,33 +100,11 @@ export const MainPageAlbumDatas = [
     }
 ]
 
+import {MakeCommonAlbumIds,AssignImageDatas} from 'assets/data/AlbumData'
 export const AlbumsLength = MainPageIntroDatas.length
 // Assign common ids to datas
-const MakeCommonAlbumIds = (albumLengths, AlbumIntroDatas, SingleAlbumDatas) => {
-    console.log("make Ids")
-    const AlbumIds = []
-    Array(albumLengths).fill(0).forEach((e,idx) => AlbumIds.push(idx))
-    AlbumIds.forEach((AlbumId,idx) => {
-        // console.log("albumId in making func", id )
-        AlbumIntroDatas[idx].id     = AlbumId
-        SingleAlbumDatas[idx].id        = AlbumId
-
-        AlbumIntroDatas[idx].order  = AlbumId
-        SingleAlbumDatas[idx].order     = AlbumId
-    })
-}
 MakeCommonAlbumIds(AlbumsLength, MainPageIntroDatas, MainPageAlbumDatas)
 // AlbumIntroDatas.forEach((e) => console.log("Intro Album id",e.id))
 // SingleAlbumDatas.forEach((e) => console.log("Single Album id",e.id))
 
-const AssignImageDatas = (ImgArr,AlbumIntroDatas,SingleAlbumDatas) => {
-    // 6개단위로 쪼갠다
-    // 각 6개마다, 1번째 요소들만은, intro 에
-    // 각 6개마다, 3개 모두는 single 에
-    for(let i = 0 ; i < 1 ; i++){
-        let tmpImgs = ImgArr.slice(3*i,3*i + 3)
-        AlbumIntroDatas[i].image = tmpImgs[0]
-        tmpImgs.forEach((img,idx) => SingleAlbumDatas[i].images[idx].image = img)
-    }
-}
-AssignImageDatas(IMAGES_DATA, MainPageIntroDatas, MainPageAlbumDatas)
+AssignImageDatas(IMAGES_DATA, MainPageIntroDatas, MainPageAlbumDatas,1)
