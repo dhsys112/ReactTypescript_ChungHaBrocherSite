@@ -1,14 +1,14 @@
-import React from 'react';
-import styled, { css } from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import { Button } from 'components/common/Button';
-import { IoMdArrowRoundForward } from 'react-icons/io';
+import React from "react";
+import styled, { css } from "styled-components/macro";
+import { Link } from "react-router-dom";
+import { Button } from "components/common/Button";
+import { IoMdArrowRoundForward } from "react-icons/io";
 import {
   FaInstagram,
   FaFacebookF,
   FaLinkedinIn,
-  FaYoutube
-} from 'react-icons/fa';
+  FaYoutube,
+} from "react-icons/fa";
 
 const Section = styled.section`
   background: #000d1a;
@@ -124,25 +124,24 @@ const Footer = () => {
           </Quote>
           <FooterInfo>
             <h4>Contact Us</h4>
-            <Link to='/homes'>FAQ</Link>
-            <Link to='/homes'>Support</Link>
-            <Link to='/homes'>Questions</Link>
+            <Link to="/homes">FAQ</Link>
+            <Link to="/homes">Support</Link>
+            <Link to="/homes">Questions</Link>
           </FooterInfo>
-          
         </FooterTop>
         <FooterBottom>
           <SocialIcons>
             <a
-              href='https://www.youtube.com/user/CJENMMUSIC'
-              rel='noopener noreferrer'
-              target='_blank'
+              href="https://www.youtube.com/user/CJENMMUSIC"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <Youtube />
             </a>
             <a
-              href='https://www.instagram.com/chungha_official/'
-              rel='noopener noreferrer'
-              target='_blank'
+              href="https://www.instagram.com/chungha_official/"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               <Instagram />
             </a>
