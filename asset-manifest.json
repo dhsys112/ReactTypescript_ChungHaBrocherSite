@@ -1,14 +1,12 @@
 {
   "files": {
-    "main.js": "/ReactTypescript_ChungHaBrocherSite/static/js/main.ddbfcce8.chunk.js",
-    "main.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/main.ddbfcce8.chunk.js.map",
-    "runtime-main.js": "/ReactTypescript_ChungHaBrocherSite/static/js/runtime-main.621b9e2e.js",
-    "runtime-main.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/runtime-main.621b9e2e.js.map",
+    "main.js": "/ReactTypescript_ChungHaBrocherSite/static/js/main.fa3e32b2.chunk.js",
+    "main.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/main.fa3e32b2.chunk.js.map",
+    "runtime-main.js": "/ReactTypescript_ChungHaBrocherSite/static/js/runtime-main.8156cf10.js",
+    "runtime-main.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/runtime-main.8156cf10.js.map",
     "static/css/2.ec02d681.chunk.css": "/ReactTypescript_ChungHaBrocherSite/static/css/2.ec02d681.chunk.css",
     "static/js/2.99709fc6.chunk.js": "/ReactTypescript_ChungHaBrocherSite/static/js/2.99709fc6.chunk.js",
     "static/js/2.99709fc6.chunk.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/2.99709fc6.chunk.js.map",
-    "static/js/3.b5a002a0.chunk.js": "/ReactTypescript_ChungHaBrocherSite/static/js/3.b5a002a0.chunk.js",
-    "static/js/3.b5a002a0.chunk.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/3.b5a002a0.chunk.js.map",
     "index.html": "/ReactTypescript_ChungHaBrocherSite/index.html",
     "static/css/2.ec02d681.chunk.css.map": "/ReactTypescript_ChungHaBrocherSite/static/css/2.ec02d681.chunk.css.map",
     "static/js/2.99709fc6.chunk.js.LICENSE.txt": "/ReactTypescript_ChungHaBrocherSite/static/js/2.99709fc6.chunk.js.LICENSE.txt",
@@ -33,9 +31,9 @@
     "static/media/bars.3fb19b63.svg": "/ReactTypescript_ChungHaBrocherSite/static/media/bars.3fb19b63.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.621b9e2e.js",
+    "static/js/runtime-main.8156cf10.js",
     "static/css/2.ec02d681.chunk.css",
     "static/js/2.99709fc6.chunk.js",
-    "static/js/main.ddbfcce8.chunk.js"
+    "static/js/main.fa3e32b2.chunk.js"
   ]
 }
