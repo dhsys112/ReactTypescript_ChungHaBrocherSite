@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/ReactTypescript_ChungHaBrocherSite/static/js/main.31cda5e0.chunk.js",
-    "main.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/main.31cda5e0.chunk.js.map",
+    "main.js": "/ReactTypescript_ChungHaBrocherSite/static/js/main.fb4eb08a.chunk.js",
+    "main.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/main.fb4eb08a.chunk.js.map",
     "runtime-main.js": "/ReactTypescript_ChungHaBrocherSite/static/js/runtime-main.621b9e2e.js",
     "runtime-main.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/runtime-main.621b9e2e.js.map",
     "static/css/2.ec02d681.chunk.css": "/ReactTypescript_ChungHaBrocherSite/static/css/2.ec02d681.chunk.css",
-    "static/js/2.99709fc6.chunk.js": "/ReactTypescript_ChungHaBrocherSite/static/js/2.99709fc6.chunk.js",
-    "static/js/2.99709fc6.chunk.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/2.99709fc6.chunk.js.map",
+    "static/js/2.f1455cf7.chunk.js": "/ReactTypescript_ChungHaBrocherSite/static/js/2.f1455cf7.chunk.js",
+    "static/js/2.f1455cf7.chunk.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/2.f1455cf7.chunk.js.map",
     "static/js/3.b5a002a0.chunk.js": "/ReactTypescript_ChungHaBrocherSite/static/js/3.b5a002a0.chunk.js",
     "static/js/3.b5a002a0.chunk.js.map": "/ReactTypescript_ChungHaBrocherSite/static/js/3.b5a002a0.chunk.js.map",
     "index.html": "/ReactTypescript_ChungHaBrocherSite/index.html",
     "static/css/2.ec02d681.chunk.css.map": "/ReactTypescript_ChungHaBrocherSite/static/css/2.ec02d681.chunk.css.map",
-    "static/js/2.99709fc6.chunk.js.LICENSE.txt": "/ReactTypescript_ChungHaBrocherSite/static/js/2.99709fc6.chunk.js.LICENSE.txt",
+    "static/js/2.f1455cf7.chunk.js.LICENSE.txt": "/ReactTypescript_ChungHaBrocherSite/static/js/2.f1455cf7.chunk.js.LICENSE.txt",
     "static/media/1_1.png": "/ReactTypescript_ChungHaBrocherSite/static/media/1_1.a7b320d1.png",
     "static/media/1_2.png": "/ReactTypescript_ChungHaBrocherSite/static/media/1_2.adb62fcb.png",
     "static/media/1_3.png": "/ReactTypescript_ChungHaBrocherSite/static/media/1_3.22252e8c.png",
@@ -35,7 +35,7 @@
   "entrypoints": [
     "static/js/runtime-main.621b9e2e.js",
     "static/css/2.ec02d681.chunk.css",
-    "static/js/2.99709fc6.chunk.js",
-    "static/js/main.31cda5e0.chunk.js"
+    "static/js/2.f1455cf7.chunk.js",
+    "static/js/main.fb4eb08a.chunk.js"
   ]
 }
