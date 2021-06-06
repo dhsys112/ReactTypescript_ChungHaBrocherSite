@@ -20,10 +20,10 @@ router.post('/albums', (req,res) => {
 
 // 앨범 페이지 
 router.post('/album_by_id', (req,res) => {
-    const {albumId} = req.body
+    const {albumId} = req.body 
+    console.log("req.body",req.body)
     // 여기에 cache 기능 넣기 : cache object 따로 생성하기  
-    Album.find({'albumId':albumId}).exec((err,albums)=>{
-        console.log("albums length",albums.length)
+    Album.findOne({'albumId':albumId}).exec((err,album)=>{
         if(err){
             console.log("error")
             return res.status(400)

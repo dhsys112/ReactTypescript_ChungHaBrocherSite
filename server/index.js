@@ -11,13 +11,8 @@ connectToMongoDb()
 // Allows our application to make HTTP requests to Express application
 app.use(cors());
 
-// Song   --- 
-// const songs = require('./router/songs')
-// app.use('/songs/', songs)
-
-// Albums --- 
-// const albums = require('./router/albums')
-// app.use('/albums/', mypage)
+// post body
+app.use(express.json())
 
 // Main   --- 
 const main = require('./router/main')

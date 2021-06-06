@@ -10,7 +10,7 @@ interface MatchParams {
   albumId: string;
 }
 
-const refineAlbumInfo = (album: any) => {
+const refineAlbumIntroInfo = (album: any) => {
   return {
     heading: album.albumName,
     paragraphOne: "",
@@ -18,34 +18,49 @@ const refineAlbumInfo = (album: any) => {
     paragraphTwo: "",
     // paragraphTwo: album.paragraphTwo,
     buttonLabel: `View ${album.albumName}`,
-    image: album.albumUrl,
+    image: album.albumImg,
     // reverse: album.id! % 2 ? true : false,
     reverse: true,
     delay: 100,
   };
 };
 
+const refineAlbumImgInfo = (album: any) => {
+  return [
+    {
+      albumId: album.albumId,
+      albumName: album.albumName,
+      artistNm: album.artistNm,
+      albumUrl: album.albumUrl,
+      label: album.albumName,
+      titleSong: album.titleSong,
+      albumImg: album.albumImg,
+      alt: album.albumName,
+      albumOpenDate: new Date(album.albumOpenDate),
+    },
+  ];
+};
+
 const SingleAlbumPageContainer: React.FC<RouteComponentProps<MatchParams>> = ({
   match,
 }) => {
-  let { albumId } = match.params;
-  const [albumImg, setAlbumImg] = useState<Array<ImageInfoType>>();
+  const [albumImg, setAlbumImg] = useState<Array<ImageInfoType>>([]);
   const [albumInfo, setAlbumInfo] = useState<InfosectionProps>();
+  let { albumId } = match.params;
+  const body = { albumId: albumId };
+
   useEffect(() => {
-    Axios.post(`/api/album/album_by_id`, { albumId }).then((res) => {
-      console.log("albumFromDb", res);
-      const albumFromDb = res.data.album.map(
-        ({ ...rest }, songNums: any, songs: any) => rest
-      );
-      setAlbumImg([albumFromDb]);
-      setAlbumInfo(refineAlbumInfo(res.data.album));
+    Axios.post("/api/album/album_by_id", body).then((res) => {
+      const albumImgInfo = refineAlbumImgInfo(res.data.album);
+      setAlbumImg(albumImgInfo);
+      setAlbumInfo(refineAlbumIntroInfo(res.data.album));
     });
-  }, [setAlbumImg, setAlbumInfo]);
+  }, []);
 
   return (
     <>
-      {/* <Hero slides={albumImg!} />;
-      <InfoSection {...albumInfo} /> */}
+      <Hero slides={albumImg && albumImg} />;
+      <InfoSection {...albumInfo} />
       {/* <Video videoId={album.videoId} /> */}
     </>
   );

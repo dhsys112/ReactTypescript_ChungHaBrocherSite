@@ -29,7 +29,6 @@ const Albums = () => {
 
   useEffect(() => {
     Axios.post("/api/album/albums").then((res) => {
-      console.log("res", res);
       const albumLists: Array<AlbumIntroDataType> = res.data.albums.map(
         (album: any) => refineAlbumIntoInfo(album)
       );
