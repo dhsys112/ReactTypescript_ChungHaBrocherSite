@@ -32,4 +32,19 @@ router.post('/album_by_id', (req,res) => {
     })
 })
 
+// 사진 페이지 
+router.post('/images', (req,res) => {
+    // 여기에 cache 기능 넣기 : cache object 따로 생성하기  
+    
+    Album.find().exec((err,albums)=>{
+        if(err){
+            console.log("error")
+            return res.status(400)
+        }
+        const imgDatas = []
+        albums.forEach(album=>imgDatas.push(album.albumImg))
+        return res.status(200).json({imgDatas})
+    })
+})
+
 module.exports = router;

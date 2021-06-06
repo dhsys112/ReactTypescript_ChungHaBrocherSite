@@ -40,6 +40,7 @@ const Pictures = () => {
     <TotalPictureContainer>
       {pictures[0] &&
         pictures.map((picture, idx) => {
+          console.log("picture", picture);
           if (pictures.length === idx + 1) {
             return (
               <SinglePicture

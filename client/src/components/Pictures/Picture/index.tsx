@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ImageDataType } from "assets/data/types";
 
 interface SinglePictureProps {
-  Image: ImageDataType;
+  Image: string;
   IsOdd: boolean;
 }
 
@@ -14,8 +14,8 @@ const SinglePicture = memo(
       return (
         <PictureContainer odd={IsOdd} ref={ref}>
           <SingleImage
-            src={Image.src}
-            alt={Image.alt}
+            src={Image}
+            alt={Image}
             initial="hidden"
             animate="visible"
             exit="exit"
