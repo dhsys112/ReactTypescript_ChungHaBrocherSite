@@ -1,17 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "components/common/Button";
-import { ImageInfoType } from "assets/data/types";
-
-interface InfoSectionProps {
-  heading: string;
-  paragraphOne: string;
-  paragraphTwo: string;
-  buttonLabel: string;
-  reverse: boolean;
-  image: string | undefined;
-  delay: number;
-}
+import { ImageInfoType, InfoSectionProps } from "assets/data/types";
 
 const InfoSection = ({
   heading,

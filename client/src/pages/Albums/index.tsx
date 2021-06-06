@@ -1,36 +1,66 @@
-import React from 'react';
-import AlbumContainer from 'components/Albums/AlbumContainer';
-import styled from 'styled-components/macro';
-import {AlbumIntroDatas} from 'assets/data/AlbumData'
+import React, { useEffect, useState } from "react";
+import AlbumContainer from "components/Albums/AlbumContainer";
+import styled from "styled-components/macro";
+import { AlbumIntroDataType } from "assets/data/types";
+import Axios from "axios";
+
+const makeTwoAlbumsOne = (albums: Array<AlbumIntroDataType>) => {
+  const twoAsOneArr = [];
+  for (let i = 0; i < albums.length; i += 2) {
+    twoAsOneArr.push(albums.slice(i, i + 2));
+  }
+  return twoAsOneArr;
+};
+
+const refineAlbumIntoInfo = (album: any) => {
+  return {
+    id: album.albumId,
+    order: 1,
+    albumName: album.albumName,
+    artistNm: album.artistNm,
+    titleSong: album.titleSong,
+    albumImg: album.albumImg,
+    albumOpenDate: album.albumOpenDate,
+  };
+};
 
 const Albums = () => {
-  const TwoAlbumsAtOnceArray = []
-  for(let i = 0 ; i < AlbumIntroDatas.length; i+= 2){
-    TwoAlbumsAtOnceArray.push(AlbumIntroDatas.slice(i,i+2))
-  }
+  const [twoAlbumsAtOne, setTwoAlbumsAtOne] = useState<any>();
+
+  useEffect(() => {
+    Axios.post("/api/album/albums").then((res) => {
+      console.log("res", res);
+      const albumLists: Array<AlbumIntroDataType> = res.data.albums.map(
+        (album: any) => refineAlbumIntoInfo(album)
+      );
+      setTwoAlbumsAtOne(makeTwoAlbumsOne(albumLists));
+    });
+  }, []);
+
   return (
     <>
-    <Section>
-      <Container>
-        <Heading>
-          <h1
-            data-aos='fade-right'
-            data-aos-duration='1000'
-            data-aos-once='true'
-            data-aos-anchor-placement='center bottom'
-          >
-            View Albums
-          </h1>
-        </Heading>
-        {TwoAlbumsAtOnceArray[0] && TwoAlbumsAtOnceArray.map((AlbumIntroData,idx) => {
-          return (
-            <AlbumContainer key = {idx} datas = {AlbumIntroData} />
-          )
-        })}
-      </Container>
-    </Section>
+      <Section>
+        <Container>
+          <Heading>
+            <h1
+              data-aos="fade-right"
+              data-aos-duration="1000"
+              data-aos-once="true"
+              data-aos-anchor-placement="center bottom"
+            >
+              View Albums
+            </h1>
+          </Heading>
+          {twoAlbumsAtOne &&
+            twoAlbumsAtOne.map(
+              (AlbumIntroData: Array<AlbumIntroDataType>, idx: number) => {
+                return <AlbumContainer key={idx} datas={AlbumIntroData} />;
+              }
+            )}
+        </Container>
+      </Section>
     </>
-  )
+  );
 };
 
 export default Albums;
@@ -64,4 +94,3 @@ const InfoRow = styled.div`
     flex-direction: column;
   }
 `;
-

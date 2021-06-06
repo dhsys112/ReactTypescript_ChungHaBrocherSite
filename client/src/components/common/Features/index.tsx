@@ -6,8 +6,8 @@ import ImageOne from "assets/images/kitchen-1.jpg";
 interface FeaturesPrps {
   IsOdd: boolean;
   routeIdx: number;
-  img: string | undefined;
-  year: string;
+  img: string;
+  album: string;
   song: string;
   paragraph1: string;
   paragraph2: string;
@@ -16,7 +16,7 @@ const Features = ({
   IsOdd,
   routeIdx,
   img,
-  year,
+  album,
   song,
   paragraph1,
   paragraph2,
@@ -34,7 +34,7 @@ const Features = ({
               data-aos-anchor-placement="center bottom"
             >
               <h1>{song}</h1>
-              <p>{year}</p>
+              <p>{album}</p>
 
               <Button to={`/album/${routeIdx}`}>Learn More</Button>
             </Content>

@@ -21,7 +21,15 @@ app.use(cors());
 
 // Main   --- 
 const main = require('./router/main')
-app.use('/', main)
+app.use('/api/', main)
+
+// Albums   --- 
+const albums = require('./router/albums')
+app.use('/api/album/', albums)
+
+// Songs   --- 
+const songs = require('./router/songs')
+app.use('/api/song/', songs)
 
 const server = app.listen(5000,function(){
   console.log("Server has started on port 5000");

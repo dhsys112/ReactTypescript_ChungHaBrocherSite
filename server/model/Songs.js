@@ -6,6 +6,7 @@ const songSchema = new mongoose.Schema({
     songArtist : String ,
     songLikes  : Number ,
     album      : String ,
+    songImg    : String , 
     songOpenDate : {type : Date}
 })
 

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components/macro";
 import React from "react";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundForward } from "react-icons/io";
-import { AlbumIntroDataType, ImageDataType } from "assets/data/types";
+import { AlbumIntroDataType } from "assets/data/types";
 
 interface OneAlbumProp {
   AlbumData: AlbumIntroDataType;
@@ -10,7 +10,7 @@ interface OneAlbumProp {
 }
 
 const OneAlbum = ({ AlbumData, first }: OneAlbumProp) => {
-  console.log("Intro Page Single Album Id", AlbumData.id);
+  // console.log("Intro Page Single Album Id", AlbumData.id);
   return (
     <>
       <InfoWrap
@@ -19,10 +19,14 @@ const OneAlbum = ({ AlbumData, first }: OneAlbumProp) => {
         data-aos-once="true"
         data-aos-anchor-placement="center bottom"
       >
-        <AlbumImage first={first} src={AlbumData.image} alt="home" />
+        <AlbumImage
+          first={first}
+          src={AlbumData && AlbumData.albumImg}
+          alt="home"
+        />
         <InfoWrapper first={first}>
-          <h2>{AlbumData.title}</h2>
-          <InfoLink to={`/album/${AlbumData.id}`}>
+          <h2>{AlbumData && AlbumData.titleSong}</h2>
+          <InfoLink to={`/album/${AlbumData && AlbumData.id}`}>
             <p>View Details</p>
             <Arrow />
           </InfoLink>

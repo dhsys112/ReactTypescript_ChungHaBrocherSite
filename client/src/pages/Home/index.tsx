@@ -1,27 +1,32 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "components/common/Hero";
-import { SingleAlbumDatas } from "assets/data/AlbumData";
 import Axios from "axios";
-
+import { ImageInfoType } from "assets/data/types";
 const Home = () => {
-  let album = SingleAlbumDatas[SingleAlbumDatas.length - 1];
-  let albumInfo = {
-    heading: album.title,
-    paragraphOne: album.paragraphOne,
-    paragraphTwo: album.paragraphTwo,
-    buttonLabel: "View HomePage",
-    image: album.images[0].image,
-    reverse: album.id! % 2 ? true : false,
-    delay: 100,
-  };
+  const [albums, setAlbums] = useState<Array<ImageInfoType>>([]);
+  /*
+    albumName  : string
+    artistNm   : string
+    albumUrl     : string
+    label    : string
+    titleSong : string , 
+    albumImg    : string | undefined
+    alt      : string 
+    albumOpenDate : Date
+  */
+
   useEffect(() => {
     Axios.post("/api").then((res) => {
-      console.log("data", res.data.albums);
+      const albumLists = res.data.albums.map(
+        ({ ...rest }, songNums: any, songs: any) => rest
+      );
+      setAlbums(albumLists);
     });
-  }, []);
+  }, [setAlbums]);
+
   return (
     <>
-      <Hero slides={album.images} />
+      <Hero slides={albums} />
       {/* <InfoSection {...InfoData} /> */}
       {/* <Listings datas =  {SliderData.slice(0,2)} /> */}
       {/* <Features /> */}

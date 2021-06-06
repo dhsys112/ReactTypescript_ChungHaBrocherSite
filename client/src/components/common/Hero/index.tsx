@@ -72,7 +72,7 @@ const Hero = memo(({ slides }: HeroProps) => {
                   {index === current && (
                     <HeroSlider>
                       <HeroImage
-                        src={slide.image}
+                        src={slide.albumImg}
                         alt={slide.alt}
                         initial="hidden"
                         animate="visible"
@@ -82,20 +82,20 @@ const Hero = memo(({ slides }: HeroProps) => {
                       {/* data-aos...이는 모두 animation 적용 방법을 세팅하는 것  */}
                       <HeroContent>
                         <h1 data-aos="fade-down" data-aos-duration="600">
-                          {slide.title}
+                          {slide.albumName}
                         </h1>
                         <p
                           data-aos="fade-down"
                           data-aos-duration="600"
                           data-aos-delay="200"
                         >
-                          {slide.price}
+                          {slide.titleSong}
                         </p>
                         <Button
                           data-aos="zoom-out"
                           data-aos-duration="500"
                           data-aos-delay="250"
-                          to={slide.path}
+                          to={`/album/${slide.albumId}`}
                           primary={true}
                           maxcontrol="true"
                         >

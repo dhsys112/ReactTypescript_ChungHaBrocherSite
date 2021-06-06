@@ -21,12 +21,6 @@ const routes = [
   { path: "/album/:albumId", name: "singleAlbum", Component: SingleAlbum },
   { path: "/pictures", name: "pictures", Component: Pictures },
 ];
-// <Route path="/" exact component={Home} />
-//         <Route path="/hitSongs" component={About} />
-//         <Route path="/albums" component={Albums} />
-//         <Route path="/album/:albumId" component={SingleAlbum} />
-//         {/*<Route path='/rentals' component={Rentals} />*/}
-//         <Route path="/pictures" component={Pictures} />
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
