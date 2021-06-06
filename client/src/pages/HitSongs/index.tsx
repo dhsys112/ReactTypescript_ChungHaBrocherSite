@@ -16,9 +16,10 @@ const refineSongData = (song: any) => {
 const About = () => {
   const [totalSongs, setTotalSongs] = useState<Array<SongType>>();
   useEffect(() => {
-    Axios.post("/song/songs", {}).then((res) =>
-      setTotalSongs(res.data.songs.map((song: any) => refineSongData(song)))
-    );
+    Axios.post("api/song/songs", {}).then((res) => {
+      console.log("res", res);
+      setTotalSongs(res.data.songs.map((song: any) => refineSongData(song)));
+    });
   }, [setTotalSongs]);
 
   return (
