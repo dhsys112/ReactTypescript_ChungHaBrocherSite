@@ -1,31 +1,74 @@
 # Product Name
 > Singer ChungHa Brocher Site  
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
-One to two paragraph statement about your product and what it does.
+## Tech/framework used
 
-![](header.png)
+1) Front-End
+- React
+- Typescript
+- Styled-Component
+- Framer-Motion
+2) Back-End
+- NodeJS
+- MongoDB
 
-## Installation
-
-## Usage example
+## Product Introduction 
 With all the album,song lists scrpped from 
 'Melon' ( www.melon.com ) ,
 you can specically see the intro, explanation
 of singer Chungha's arts 
 
+## Product Description
+
+<br/>
+
+### 1) MainPage
+![](./readmeImg/main.png)
+
+Displaying All Lists of Albums
+with Slide Shows
+
+<br/>
+
+### 2) Albums Page
+![](./readmeImg/albums.png)
+
+displaying All Lists of Albums 
+with Scrolls
+
+<br/>
+
+### 3) Single Album Page
+![](./readmeImg/singlealbum.png)
+
+displaying single Album
+
+<br/>
+
+### 4) Pictures Page
+![](./readmeImg/pictures.png)
+
+displaying Lists of pictures
+randomly
+<br/>
+
+### 5) Songs Page
+![](./readmeImg/songs.png)
+
+displaying songs Lists
+
+<br/>
 
 ## Development setup
 
 download the application
-1) 
+
+1) (at the root folder)
 ```sh
 npm install 
 ```
-2) 
+2) (go to client folder)
 ```sh
 cd client
 npm i 
