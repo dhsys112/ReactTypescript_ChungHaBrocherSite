@@ -1,8 +1,8 @@
 /node_modules
 /build
 
-dev.js
-
+/server/config/dev.js
+/readmeImg
 
 
 .DS_Store
