@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/styled-components": "^5.1.9",
+    "antd": "^4.16.2",
     "bcrypt": "^3.0.8",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.9",
