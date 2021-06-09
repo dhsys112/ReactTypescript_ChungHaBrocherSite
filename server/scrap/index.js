@@ -47,7 +47,7 @@ async function scrapeAlbumDescription(pgIdx){
             const songNums        = $(elem).find('.wrap_btn > .tot_song').text().slice(0,-1) 
             // console.log("songNums",songNums)
             const scrapResult = {
-                artistNm,albumImg,albumId,albumUrl,
+                artistNm,albumImg,albumId,albumUrl,albumYear
                 albumType,albumName,albumArtistName,
                 titleSong,albumOpenDate,songNums,songs:[]
             }
@@ -112,10 +112,11 @@ const insertAlbumInMongoDB = async (albumArray) => {
 const scrapeAlbumLists = async () => {
     let url = '';
     await connectToMongoDb()
-    for(let pgIdx = 1 ; pgIdx < 46; pgIdx = pgIdx + 15){
+    for(let pgIdx = 1 ; pgIdx < 47; pgIdx = pgIdx + 15){
         const [albumResults,artistNm] = await scrapeAlbumDescription(pgIdx);
         const albumsFullData    = await scrapSongDesicription(albumResults,artistNm)
         // console.log("albumsFullData",albumsFullData)
+        console.log("pgIdx",pgIdx)
         await insertAlbumInMongoDB(albumsFullData)
         await sleep(1000)
     }

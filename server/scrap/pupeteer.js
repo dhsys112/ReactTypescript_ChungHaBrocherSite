@@ -47,12 +47,15 @@ async function scrapeAlbumDescription(pgIdx,page){
             // console.log("titleSong",titleSong)
             const albumOpenDate   = $(elem).find('.wrap_btn > .cnt_view').text() 
             // console.log("albumOpDate",albumOpenDate)
+            const albumYear   = albumOpenDate.split('.')[0]
+            // console.log("albumYear",albumYear)
             const songNums        = $(elem).find('.wrap_btn > .tot_song').text().slice(0,-1) 
             // console.log("songNums",songNums)
             const scrapResult = {
                 artistNm,albumImg,albumId,albumUrl,
                 albumType,albumName,albumArtistName,
-                titleSong,albumOpenDate,songNums,songs:[]
+                titleSong,albumOpenDate,albumYear,
+                songNums,songs:[]
             }
             scrapResults.push(scrapResult)
         })
