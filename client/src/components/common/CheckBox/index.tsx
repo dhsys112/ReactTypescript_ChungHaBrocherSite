@@ -8,11 +8,17 @@ const { Panel } = Collapse;
     "year" : "2021"
 }
 */
+
 interface CheckBoxList {
   val: string;
 }
+interface CheckBoxPros {
+  type: string;
+  list: Array<CheckBoxList>;
+  handleFilters: (filters: string[]) => void;
+}
 
-const CheckBox = memo((props: any) => {
+const CheckBox = memo(({ type, list, handleFilters }: CheckBoxPros) => {
   // Checkbox의 체크된 애들의 목록 ex.1 번 체크하면 여기에 들어간다 / ex. 1,2,3 체크하면 [1,2,3] 이런 식으로 들어가게 된다
   const [Checked, setChecked] = useState<Array<string>>([]);
 
@@ -35,13 +41,13 @@ const CheckBox = memo((props: any) => {
     // 새로나온 newChecked를 넣어준다
     setChecked(newChecked);
     // 부모 컴포넌트에게 해당 checked 정보를 넘겨준다
-    props.handleFilters(newChecked);
+    handleFilters(newChecked);
   };
 
   // props를 통해 주어지는 대륙 목록을 보여준다
   const renderCheckboxLists = () =>
-    props.list &&
-    props.list.map((value: CheckBoxList, index: number) => (
+    list &&
+    list.map((value: CheckBoxList, index: number) => (
       // key값 넣는 것이 중요하다
       <Fragment key={index}>
         {/* handleToggle : 체크박스 컨트롤 해주기 
@@ -62,7 +68,7 @@ const CheckBox = memo((props: any) => {
   return (
     <div>
       <Collapse defaultActiveKey={["0"]}>
-        <Panel header="Continents" key="1">
+        <Panel header={type} key="1">
           {renderCheckboxLists()}
         </Panel>
       </Collapse>

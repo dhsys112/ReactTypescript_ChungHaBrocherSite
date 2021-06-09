@@ -132,7 +132,7 @@ const Albums = () => {
     return array;
   };
 
-  const handleFilters = (filters: any, category: string) => {
+  const handleFilters = (filters: string[], category: string) => {
     // filters는 CheckBox 자식 component에서 props를 통해 넘겨주는, 체크된 애들의 목록 및 정보( id )
     const newFilters = { ...Filters };
 
@@ -198,8 +198,9 @@ const Albums = () => {
               {/* CheckBox에서 체크된 애들의 list도 부모 component로 가져와야 하고 handleFilters를 통해 실시한다 
                     "years라고 해준 이유는, 2개 checkbox중에서 대륙에 해당하는 checkbox를 넘겨준 것이다 */}
               <Checkbox
+                type={"Years"}
                 list={albumYearDatas}
-                handleFilters={(filters: Filters) =>
+                handleFilters={(filters: string[]) =>
                   handleFilters(filters, "years")
                 }
               />
@@ -208,9 +209,10 @@ const Albums = () => {
             <Col lg={12} xs={24}>
               {/* CheckBox */}
               <Checkbox
+                type={"Types"}
                 list={albumTypeDatas}
-                handleFilters={(filters: Filters) =>
-                  handleFilters(filters, "years")
+                handleFilters={(filters: string[]) =>
+                  handleFilters(filters, "types")
                 }
               />
             </Col>
