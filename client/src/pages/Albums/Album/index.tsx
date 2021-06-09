@@ -5,41 +5,11 @@ import Video from "components/Video";
 import { RouteComponentProps } from "react-router-dom";
 import { ImageInfoType, InfosectionProps } from "assets/data/types";
 import Axios from "axios";
+import { refineAlbumIntroInfo, refineAlbumImgInfo } from "utils/refine";
 
 interface MatchParams {
   albumId: string;
 }
-
-const refineAlbumIntroInfo = (album: any) => {
-  return {
-    heading: album.albumName,
-    paragraphOne: "",
-    // paragraphOne: album.paragraphOne,
-    paragraphTwo: "",
-    // paragraphTwo: album.paragraphTwo,
-    buttonLabel: `View ${album.albumName}`,
-    image: album.albumImg,
-    // reverse: album.id! % 2 ? true : false,
-    reverse: true,
-    delay: 100,
-  };
-};
-
-const refineAlbumImgInfo = (album: any) => {
-  return [
-    {
-      albumId: album.albumId,
-      albumName: album.albumName,
-      artistNm: album.artistNm,
-      albumUrl: album.albumUrl,
-      label: album.albumName,
-      titleSong: album.titleSong,
-      albumImg: album.albumImg,
-      alt: album.albumName,
-      albumOpenDate: new Date(album.albumOpenDate),
-    },
-  ];
-};
 
 const SingleAlbumPageContainer: React.FC<RouteComponentProps<MatchParams>> = ({
   match,

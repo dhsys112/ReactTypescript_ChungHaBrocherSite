@@ -31,8 +31,8 @@ const Listings = ({ datas }: ListingsProps) => {
             data-aos-once="true"
             data-aos-anchor-placement="center bottom"
           >
-            <Image src={DataOne.image} alt="home" />
-            <h2>{DataOne.title}</h2>
+            <Image src={DataOne.albumImg} alt="home" />
+            <h2>{DataOne.titleSong}</h2>
             <InfoLink to="/">
               <p>View Details</p>
               <Arrow />

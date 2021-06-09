@@ -1,8 +1,8 @@
 const request    = require('request-promise')
 const mongoose   = require('mongoose')
 const cherrio    = require('cheerio')
-const AlbumModel = require('../model/Albums')
-const SongModel  = require('../model/Songs')
+const {Album} = require('../model/Albums')
+const {Song}  = require('../model/Songs')
 const path       = require('path')
 const dotenv     = require('dotenv')
 dotenv.config({path:path.join(__dirname,'../../.env')})
@@ -38,10 +38,12 @@ async function scrapeAlbumDescription(pgIdx){
             // console.log("albumName",albumName)
             const albumArtistName      = $(elem).find('.checkEllipsis > .play_artist').text().trim() 
             // console.log("artistName",artistName)
-            const titleSong       = $(elem).find('.btn_play_song > .songname12').text() 
-            // console.log("titleSong",titleSong)
             const albumOpenDate   = $(elem).find('.wrap_btn > .cnt_view').text() 
             // console.log("albumOpDate",albumOpenDate)
+            const albumYear   = albumOpenDate.split('.')[0]
+            // console.log("albumYear",albumYear)
+            const titleSong       = $(elem).find('.btn_play_song > .songname12').text() 
+            // console.log("titleSong",titleSong)
             const songNums        = $(elem).find('.wrap_btn > .tot_song').text().slice(0,-1) 
             // console.log("songNums",songNums)
             const scrapResult = {
@@ -71,7 +73,6 @@ const scrapSongDesicription = async (albumResults,artistNm) => {
                     if(!songArtist.includes(artistNm)) return 
                     const songTitle  = $(elem).find('.ellipsis:nth-child(1) > span > a').text()
                     const songId     = album.albumName + '_' + songTitle
-                    console.log("songTitle",songTitle)
                     const songLikes  = $(elem).find('td:nth-child(5) > div > button > span.cnt').text().trim().match(/\d+/g)[0]
                     $('.button_etc.like > span.cnt > span').remove()
                     const song = {songId,songTitle, songArtist,songLikes,album:album.albumName}
@@ -86,9 +87,9 @@ const scrapSongDesicription = async (albumResults,artistNm) => {
 
 const insertSongInMongoDB = async (songArray) => {
     const songs = songArray.map(async song => {
-        const songFromDb = await SongModel.findOne({songId:song.songId})
+        const songFromDb = await Song.findOne({songId:song.songId})
         if(!songFromDb){
-            const newSong = new SongModel(song)
+            const newSong = new Song(song)
             return newSong.save()
         }
     })
@@ -97,10 +98,10 @@ const insertSongInMongoDB = async (songArray) => {
 
 const insertAlbumInMongoDB = async (albumArray) => {
     const albums = albumArray.map(async album => {
-        const albumFromDb = await AlbumModel.findOne({albumId:album.albumId})
+        const albumFromDb = await Album.findOne({albumId:album.albumId})
         console.log("album save ongoing")
         if(!albumFromDb){
-            const newAlbum = new AlbumModel(album)
+            const newAlbum = new Album(album)
             await insertSongInMongoDB(album.songs)
             return newAlbum.save()
         }
@@ -111,17 +112,10 @@ const insertAlbumInMongoDB = async (albumArray) => {
 const scrapeAlbumLists = async () => {
     let url = '';
     await connectToMongoDb()
-    const [albumResults,artistNm] = await scrapeAlbumDescription(16);
-    const albumsFullData    = await scrapSongDesicription(albumResults,artistNm)
-    return
     for(let pgIdx = 1 ; pgIdx < 46; pgIdx = pgIdx + 15){
-        
         const [albumResults,artistNm] = await scrapeAlbumDescription(pgIdx);
         const albumsFullData    = await scrapSongDesicription(albumResults,artistNm)
-        console.log("\n")
-        console.log("page",pg)
         // console.log("albumsFullData",albumsFullData)
-        console.log("url",url)
         await insertAlbumInMongoDB(albumsFullData)
         await sleep(1000)
     }

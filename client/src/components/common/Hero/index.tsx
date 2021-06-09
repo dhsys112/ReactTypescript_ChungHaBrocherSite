@@ -12,7 +12,6 @@ interface HeroProps {
 }
 
 const Hero = memo(({ slides }: HeroProps) => {
-  console.log("slides", slides);
   const [current, setCurrent] = useState(0);
   const length = slides!.length;
   const timeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -97,7 +96,7 @@ const Hero = memo(({ slides }: HeroProps) => {
                           data-aos-duration="500"
                           data-aos-delay="250"
                           to={`/album/${slide.albumId}`}
-                          primary={true}
+                          primary="true"
                           maxcontrol="true"
                         >
                           {slide.label}

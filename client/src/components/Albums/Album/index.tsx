@@ -37,17 +37,18 @@ const OneAlbum = ({ AlbumData, first }: OneAlbumProp) => {
 };
 
 const InfoWrap = styled.div`
-  padding: 0rem 1rem;
-  min-height: 550px;
+  padding: 2rem 0rem;
+  min-height: 400px;
   height: 100%;
-
+  width: 100%;
   h2 {
     margin-bottom: 1rem;
     font-weight: 400;
   }
-
   @media screen and (max-width: 768px) {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+    padding: 0;
+    margin-bottom: 2rem;
   }
 `;
 
@@ -69,13 +70,16 @@ const AlbumImage = styled.img<AlbumImageProp>`
         `};
   width: 100%;
   height: 100%;
-  max-width: 600px;
-  max-height: 400px;
+  max-width: 300px;
+  max-height: 300px;
   object-fit: cover;
   margin-bottom: 1rem;
   transition: all 0.5s ease-in-out;
   &:hover {
     transform: scale(1.02);
+  }
+  @media screen and (max-width: 768px) {
+    top: 0;
   }
 `;
 
@@ -89,6 +93,9 @@ const InfoWrapper = styled.div<AlbumImageProp>`
       : css`
           top: 50px;
         `};
+  @media screen and (max-width: 768px) {
+    top: 0;
+  }
 `;
 
 const InfoLink = styled(Link)`
