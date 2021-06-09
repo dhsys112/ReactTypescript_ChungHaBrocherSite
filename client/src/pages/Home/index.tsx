@@ -36,6 +36,7 @@ const Home = () => {
 
   useEffect(() => {
     Axios.post("/api").then((res) => {
+      // 최신 6개 앨범
       const albumLists = res.data.albums.map(
         ({ ...rest }, songNums: any, songs: any) => rest
       );
