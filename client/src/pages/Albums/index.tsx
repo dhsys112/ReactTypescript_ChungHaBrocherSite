@@ -45,7 +45,7 @@ const Albums = memo(() => {
   // 더이상 정보가 없을 때, 더보기 버튼이 안보이도록
   const [PostSize, setPostSize] = useState(0);
   // 체크리스트에서 체크된 리스트 들 ex. 대륙, 가격 등 ( 해당 data들의 _id )
-  let [Filters, setFilters] = useState<Filters>({
+  const [Filters, setFilters] = useState<Filters>({
     albumYear: [],
     albumType: [],
   });
@@ -88,9 +88,7 @@ const Albums = memo(() => {
   };
 
   const loadMoreHandler = () => {
-    console.log("Before skip", Skip);
     let skip = Skip + Limit;
-    console.log("After skip", skip);
     let body = {
       skip: skip,
       filters: Filters,
@@ -114,38 +112,41 @@ const Albums = memo(() => {
     getAlbums(body);
     setSkip(0);
   };
-
-  const handleFilters = useCallback((filters: any, category: string) => {
+  console.log("entire Filter", Filters);
+  const handleFilters = (filters: any, category: string) => {
     // filters는 CheckBox 자식 component에서 props를 통해 넘겨주는, 체크된 애들의 목록 및 정보( id )
+
+    console.log("before newFilters", Filters);
     const newFilters = { ...Filters };
     console.log("category // input filters", category, filters);
     // CheckBox.js에서 새로운 check된 항목들을 여기에 가져오는 것이다
     newFilters[category] = filters;
-    console.log("nerFilters", newFilters);
+    console.log("after newFilters", newFilters);
     showFilteredResults(newFilters);
     // 우리가 새롭게 바꾼 filter 내용을 state에 반영
     // 이렇게 해야, price, continent 2개 checkbox 내용이 동시 반영
     setFilters(newFilters);
-  }, []);
-  console.log("Filters", Filters);
+  };
 
   // Search Function
-  const updateSearchTerm = (newSearchTerm: string) => {
-    let body = {
-      skip: 0, // DB에서 처음부터 가져오기
-      filters: Filters, // 위의 state에 있는 filter로 ( 즉, 대륙, types에 대한 조건이 입력되어있을 텐데 ,이러한 조건들에 합하여 검색 단어까지 조합하기 )
-      limit: Limit,
-      searchTerm: newSearchTerm,
-    };
-    setSkip(0);
-    // Search 라는 자식 component로부터
-    // 검색을 하는 단어의 내용을 가져온다
-    // newSearchTerm이 바로, 자식 component에서 올려준 내용이다
-    setSearchTerm(newSearchTerm);
-
-    // Search 단어에 따른 새로운 product를 가져와준다
-    getAlbums(body);
-  };
+  const updateSearchTerm = useCallback(
+    (newSearchTerm: string) => {
+      let body = {
+        skip: 0, // DB에서 처음부터 가져오기
+        filters: Filters, // 위의 state에 있는 filter로 ( 즉, 대륙, types에 대한 조건이 입력되어있을 텐데 ,이러한 조건들에 합하여 검색 단어까지 조합하기 )
+        limit: Limit,
+        searchTerm: newSearchTerm,
+      };
+      setSkip(0);
+      // Search 라는 자식 component로부터
+      // 검색을 하는 단어의 내용을 가져온다
+      // newSearchTerm이 바로, 자식 component에서 올려준 내용이다
+      setSearchTerm(newSearchTerm);
+      // Search 단어에 따른 새로운 product를 가져와준다
+      getAlbums(body);
+    },
+    [Filters]
+  );
 
   console.log("PostSize,Limit", PostSize, Limit);
 
