@@ -78,6 +78,18 @@ randomly
 displaying songs Lists
 
 <br/>
+
+![](./readmeImg/songs_filter.png)
+
+You can apply filters
+
+<br/>
+
+![](./readmeImg/songs_search.png)
+
+You can apply search funcs
+
+<br/>
 <br/>
 
 ## Development setup
