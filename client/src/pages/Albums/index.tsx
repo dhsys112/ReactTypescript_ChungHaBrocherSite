@@ -5,16 +5,9 @@ import { AlbumIntroDataType } from "assets/data/types";
 import { albumTypeDatas, albumYearDatas } from "assets/data/TempData";
 import axios from "axios";
 import { Col, Row } from "antd";
-import Checkbox from "../../components/common/CheckBox/index";
-import SearchBox from "../../components/common/SearchBox/index";
-
-const makeTwoAlbumsOne = (albums: Array<AlbumIntroDataType>) => {
-  const twoAsOneArr = [];
-  for (let i = 0; i < albums.length; i += 2) {
-    twoAsOneArr.push(albums.slice(i, i + 2));
-  }
-  return twoAsOneArr;
-};
+import Checkbox from "components/common/CheckBox/index";
+import SearchBox from "components/common/SearchBox/index";
+import { refineTwoAlbumsOne } from "utils/refine";
 
 const refineAlbumIntoInfo = (album: any) => {
   return {
@@ -65,7 +58,7 @@ const Albums = memo(() => {
     const albumLists: Array<AlbumIntroDataType> = albums.map((album: any) =>
       refineAlbumIntoInfo(album)
     );
-    setTwoAlbumsAtOne(makeTwoAlbumsOne(albumLists));
+    setTwoAlbumsAtOne(refineTwoAlbumsOne(albumLists));
   };
 
   const getAlbums = (body: any) => {
@@ -148,8 +141,6 @@ const Albums = memo(() => {
     [Filters]
   );
 
-  console.log("PostSize,Limit", PostSize, Limit);
-
   return (
     <>
       <Section>
@@ -216,18 +207,18 @@ const Albums = memo(() => {
 
 export default Albums;
 
-const Section = styled.section`
+export const Section = styled.section`
   width: 100%;
   height: 100%;
   padding: 10rem calc((100vw - 1300px) / 2);
 `;
-const Container = styled.div`
+export const Container = styled.div`
   height: 100%;
   width: 100%;
   padding: 2rem 1rem;
 `;
 
-const Heading = styled.div`
+export const Heading = styled.div`
   font-size: 1.5rem;
   padding: 2rem 1rem;
   margin-bottom: 40px;
@@ -236,13 +227,13 @@ const Heading = styled.div`
   }
 `;
 
-const SearchBoxContainer = styled.div`
+export const SearchBoxContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 1rem auto;
 `;
 
-const BtnContainer = styled.div`
+export const BtnContainer = styled.div`
   display: flex;
   justify-content: center;
 `;

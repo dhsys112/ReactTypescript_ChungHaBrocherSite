@@ -29,13 +29,11 @@ const Features = ({
             <Content
               data-aos={IsOdd ? "fade-left" : "fade-right"}
               data-aos-duration="1200"
-              data-aos-delay="200"
               data-aos-once="true"
               data-aos-anchor-placement="center bottom"
             >
               <h1>{song}</h1>
               <p>{album}</p>
-
               <Button to={`/album/${routeIdx}`}>Learn More</Button>
             </Content>
           </ColumnLeft>

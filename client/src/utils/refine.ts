@@ -1,3 +1,5 @@
+import { AlbumIntroDataType } from "assets/data/types";
+
 export const refineAlbumIntroInfo = (album: any) => {
     return {
       heading: album.albumName,
@@ -28,4 +30,23 @@ export const refineAlbumImgInfo = (album: any) => {
       },
     ];
   };
-  
+
+export const refineTwoAlbumsOne = (albums: Array<AlbumIntroDataType>) => {
+  const twoAsOneArr = [];
+  for (let i = 0; i < albums.length; i += 2) {
+    twoAsOneArr.push(albums.slice(i, i + 2));
+  }
+  return twoAsOneArr;
+};
+
+export const refineSongData = (song: any) => {
+  return {
+    img: song.songImg,
+    albumName: song.album,
+    songTitle: song.songTitle,
+    paragraph1: "",
+    paragraph2: "",
+  };
+};
+
+export const refineSongDatas = (songs:any) => songs.map((song: any) => refineSongData(song))

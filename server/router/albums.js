@@ -6,18 +6,12 @@ const {Album} = require('../model/Albums')
 
 // 메인 페이지 
 router.post('/albums', (req,res) => {
-    console.log("req.body",req.body)
     // 여기에 cache 기능 넣기 : cache object 따로 생성하기  
     let limit = req.body.limit ? parseInt(req.body.limit) : 100 ;
     let skip = req.body.skip ? parseInt(req.body.skip) : 0 ;
     let term = req.body.searchTerm // 우리가 검색한 단어
-
     // filter를 거쳐서 들어올 때 그에 해당하는 db find하기
     let findArgs = {};
-
-    console.log("term",term)
-    console.log("filters",req.body.filters)
-
     for(let key in req.body.filters){
         // key는 check list 상에서 체크된 continents 혹은 price가 될 것이다
         if( req.body.filters[key].length  > 0){
@@ -25,7 +19,6 @@ router.post('/albums', (req,res) => {
         }    
     }
     if(term){
-        console.log("findArg in term",findArgs)
         // 만약 검색 단어가 존재한다면 
         // frontend에서 term을 보내줬다면
         Album.find(findArgs)// findArgs에 맞는 정보만 db 에서 가져오기 >> findArgs가 적용되기 위해서는 당연히 product schema에 cotinents 정보가 있어야 한다
@@ -38,8 +31,6 @@ router.post('/albums', (req,res) => {
                 console.log("err",err)
                 return res.status(400).json({ success : false, err})
             } 
-            console.log("albumInfo by term",albumInfo)
-    
             return res.status(200).json({ 
                 success : true , 
                 // albumInfo : 받아온 모든 products
