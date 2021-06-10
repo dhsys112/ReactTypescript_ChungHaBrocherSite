@@ -7,9 +7,10 @@ interface CheckBoxList {
   val: string;
 }
 interface CheckBoxPros {
+  title: string;
   type: string;
   list: Array<CheckBoxList>;
-  handleFilters: (filters: string[]) => void;
+  handleFilters: (filters: string[], type: string) => void;
 }
 
 const CheckBoxComponent = memo(
@@ -24,22 +25,28 @@ const CheckBoxComponent = memo(
       const currentIndex = Checked.indexOf(val);
 
       const newChecked = [...Checked];
+      console.log("before checked", newChecked);
 
       // 전체 checked 된 state에서, 현재 누른 checkbox가
       // 없다면, state에 넣어준다
       if (currentIndex === -1) {
+        console.log("insert new");
+        console.log("val", val);
+        console.log("before newChecked", newChecked);
         newChecked.push(val);
+        console.log("after newChecked", newChecked);
       } else {
         // 만일 있다면 빼준다
+        console.log("delete old");
         newChecked.splice(currentIndex, 1);
       }
+      console.log("after checked", newChecked);
       // 새로나온 newChecked를 넣어준다
       setChecked(newChecked);
       // 부모 컴포넌트에게 해당 checked 정보를 넘겨준다
-      handleFilters(newChecked);
+      handleFilters(newChecked, type);
     };
 
-    // props를 통해 주어지는 대륙 목록을 보여준다
     const renderCheckboxLists = useCallback(
       () =>
         list &&
@@ -60,7 +67,7 @@ const CheckBoxComponent = memo(
             </Checkbox>
           </Fragment>
         )),
-      []
+      [Checked]
     );
 
     return (

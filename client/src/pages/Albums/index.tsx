@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, memo } from "react";
 import AlbumContainer from "components/Albums/AlbumContainer";
 import styled from "styled-components/macro";
 import { AlbumIntroDataType } from "assets/data/types";
@@ -34,7 +34,7 @@ interface Filters {
   [property: string]: Array<any>;
 }
 
-const Albums = () => {
+const Albums = memo(() => {
   const [twoAlbumsAtOne, setTwoAlbumsAtOne] = useState<any>();
   // DB에서 가져온 정보( ex. Imgs ) 를 State 에 가져온다
   const [Albums, setAlbums] = useState<any>([]);
@@ -87,7 +87,7 @@ const Albums = () => {
           // 더보기
           setAlbums([...Albums, ...res.data.albumInfo]);
         } else {
-          setAlbums([...res.data.albumInfo]);
+          setAlbums(res.data.albumInfo);
         }
         refineAlbums(res.data.albumInfo);
         setPostSize(res.data.postSize);
@@ -132,29 +132,16 @@ const Albums = () => {
     return array;
   };
 
-  const handleFilters = (filters: any, category: string) => {
+  const handleFilters = useCallback((filters: any, category: string) => {
     // filters는 CheckBox 자식 component에서 props를 통해 넘겨주는, 체크된 애들의 목록 및 정보( id )
     const newFilters = { ...Filters };
-
     // CheckBox.js에서 새로운 check된 항목들을 여기에 가져오는 것이다
     newFilters[category] = filters;
-
-    // if (category == "price") {
-    //   // category가 price일 때는
-    //   // filters에 숫자들이 들어있을 것이다
-    //   // ex. "Any" 가 선택되면 0 이 들어있다
-    //   let priceValues = handlePrice(filters);
-    //   // priceValues는 handlePrice를 통해 return 된 array값이 들어갈 것이다
-    //   // newFilters의 price 항목에 대해 priceValues 라는 값과 관련된 항목을 넣어주는 것이다
-    //   newFilters[category] = priceValues; // newFilters["price"] 이렇게 될 것이다
-    // }
-
     showFilteredResults(newFilters);
-
     // 우리가 새롭게 바꾼 filter 내용을 state에 반영
     // 이렇게 해야, price, continent 2개 checkbox 내용이 동시 반영
     setFilters(newFilters);
-  };
+  }, []);
 
   // Search Function
   const updateSearchTerm = (newSearchTerm: string) => {
@@ -198,22 +185,20 @@ const Albums = () => {
               {/* CheckBox에서 체크된 애들의 list도 부모 component로 가져와야 하고 handleFilters를 통해 실시한다 
                     "years라고 해준 이유는, 2개 checkbox중에서 대륙에 해당하는 checkbox를 넘겨준 것이다 */}
               <Checkbox
-                type={"Year"}
+                title={"Album Year"}
+                type={"albumYear"}
                 list={albumYearDatas}
-                handleFilters={(filters: string[]) =>
-                  handleFilters(filters, "years")
-                }
+                handleFilters={handleFilters}
               />
             </Col>
 
             <Col lg={12} xs={24}>
               {/* CheckBox */}
               <Checkbox
-                type={"Year"}
+                title={"Album Type"}
+                type={"albumType"}
                 list={albumTypeDatas}
-                handleFilters={(filters: string[]) =>
-                  handleFilters(filters, "years")
-                }
+                handleFilters={handleFilters}
               />
             </Col>
           </Row>
@@ -244,7 +229,7 @@ const Albums = () => {
       </Section>
     </>
   );
-};
+});
 
 export default Albums;
 

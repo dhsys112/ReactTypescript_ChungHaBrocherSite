@@ -76,7 +76,6 @@ router.post('/albums', (req,res) => {
         .exec(( err , albumInfo) => {
             // albumInfo는 배열로서, 그 안에 한 상품은 한 객체 형태로 저장된다
             if(err) return res.status(400).json({ success : false, err})
-    
             return res.status(200).json({ 
                 success : true , 
                 albumInfo,
