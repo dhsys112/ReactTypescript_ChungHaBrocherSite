@@ -14,7 +14,7 @@ const AlbumContainer = memo(({ datas }: AlbumContainerProp) => {
   return (
     <InfoRow>
       <OneAlbum AlbumData={DataOne} first={true} />
-      <OneAlbum AlbumData={DataTwo} first={false} />
+      {DataTwo && <OneAlbum AlbumData={DataTwo} first={false} />}
     </InfoRow>
   );
 });
