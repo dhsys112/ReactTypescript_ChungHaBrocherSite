@@ -1,24 +1,56 @@
 const mongoose = require('mongoose')
 
 const albumSchema = new mongoose.Schema({
-    artistNm  : String,
-    albumImg  : String,
-    albumId   : Number,
-    albumUrl  : String,
-    albumType : String,
-    albumName : String,
-    albumArtistName : String,
-    titleSong : String,
+    artistNm  : {
+        type : String
+    },
+    albumImg  : {
+        type : String
+    },
+    albumId   : {
+        type : Number
+    },
+    albumUrl  : {
+        type : String
+    },
+    albumType : {
+        type : String
+    },
+    albumName : {
+        type : String
+    },
+    albumArtistName : {
+        type : String
+    },
+    titleSong : {
+        type : String
+    },
     albumOpenDate : {type: Date},
-    albumYear : String,
-    songNums : Number,
-    review : String, 
+    albumYear : {
+        type : String
+    },
+    songNums : {
+        type : Number
+    },
+    review : {
+        type : String
+    }, 
     songs : [{
-        songId     : String,
-        songTitle  : String ,
-        songArtist : String ,
-        songLikes  : Number ,
-        album      : String ,
+        songId     : {
+            type : String
+        },
+        songTitle  : {
+            type : String
+         } ,
+        songArtist : {
+            type : String
+         },
+        songLikes  : {
+            type : Number
+        },
+        album      : {
+            type : String
+        },
         songOpenDate : {type : Date}
     }]
 })
@@ -35,11 +67,9 @@ albumSchema.index({
 }, {
     // title에 더 큰 비중을 두고 걸리게 하고 싶다 
     weights : {
-        albumName : 5,
-        titleSong : 1
+        albumName : 2,
+        titleSong : 10
     }
 })
-
-
 const Album = mongoose.model('albums',albumSchema)
 module.exports = {Album}

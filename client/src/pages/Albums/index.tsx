@@ -60,17 +60,12 @@ const Albums = memo(() => {
     getAlbums(body);
   }, []);
 
+  //
   const refineAlbums = (albums: any) => {
     const albumLists: Array<AlbumIntroDataType> = albums.map((album: any) =>
       refineAlbumIntoInfo(album)
     );
-    // 처음 로드시 :
-    if (!twoAlbumsAtOne) {
-      setTwoAlbumsAtOne(makeTwoAlbumsOne(albumLists));
-      // 그외 :
-    } else {
-      setTwoAlbumsAtOne([...twoAlbumsAtOne, ...makeTwoAlbumsOne(albumLists)]);
-    }
+    setTwoAlbumsAtOne(makeTwoAlbumsOne(albumLists));
   };
 
   const getAlbums = (body: any) => {
@@ -80,10 +75,11 @@ const Albums = memo(() => {
         if (body.loadMore === true) {
           // 더보기
           setAlbums([...Albums, ...res.data.albumInfo]);
+          refineAlbums([...Albums, ...res.data.albumInfo]);
         } else {
           setAlbums(res.data.albumInfo);
+          refineAlbums(res.data.albumInfo);
         }
-        refineAlbums(res.data.albumInfo);
         setPostSize(res.data.postSize);
       } else {
         alert("상품들을 가져오는데 실패했습니다");
@@ -114,16 +110,6 @@ const Albums = memo(() => {
     };
     getAlbums(body);
     setSkip(0);
-  };
-  const handletypes = (value: any) => {
-    const data = value; // types;
-    let array = [];
-    for (let key in data) {
-      if (data[key]._id === parseInt(value, 10)) {
-        array = data[key].array; // ex. [280, 299]
-      }
-    }
-    return array;
   };
 
   const handleFilters = useCallback((filters: any, category: string) => {
@@ -157,6 +143,8 @@ const Albums = memo(() => {
     // Search 단어에 따른 새로운 product를 가져와준다
     getAlbums(body);
   };
+
+  console.log("PostSize,Limit", PostSize, Limit);
 
   return (
     <>
