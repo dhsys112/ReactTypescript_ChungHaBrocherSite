@@ -46,8 +46,8 @@ const Albums = memo(() => {
   const [PostSize, setPostSize] = useState(0);
   // 체크리스트에서 체크된 리스트 들 ex. 대륙, 가격 등 ( 해당 data들의 _id )
   let [Filters, setFilters] = useState<Filters>({
-    types: [],
-    years: [],
+    albumYear: [],
+    albumType: [],
   });
   // Search내용
   const [SearchTerm, setSearchTerm] = useState("");
@@ -58,13 +58,6 @@ const Albums = memo(() => {
       limit: Limit,
     };
     getAlbums(body);
-
-    // axios.post("/api/album/albums").then((res) => {
-    //   const albumLists: Array<AlbumIntroDataType> = res.data.albums.map(
-    //     (album: any) => refineAlbumIntoInfo(album)
-    //   );
-    //   setTwoAlbumsAtOne(makeTwoAlbumsOne(albumLists));
-    // });
   }, []);
 
   const refineAlbums = (albums: any) => {
@@ -82,6 +75,7 @@ const Albums = memo(() => {
 
   const getAlbums = (body: any) => {
     axios.post("/api/album/albums", body).then((res) => {
+      console.log("res in getAlbums", res);
       if (res.data.success) {
         if (body.loadMore === true) {
           // 더보기
@@ -135,19 +129,22 @@ const Albums = memo(() => {
   const handleFilters = useCallback((filters: any, category: string) => {
     // filters는 CheckBox 자식 component에서 props를 통해 넘겨주는, 체크된 애들의 목록 및 정보( id )
     const newFilters = { ...Filters };
+    console.log("category // input filters", category, filters);
     // CheckBox.js에서 새로운 check된 항목들을 여기에 가져오는 것이다
     newFilters[category] = filters;
+    console.log("nerFilters", newFilters);
     showFilteredResults(newFilters);
     // 우리가 새롭게 바꾼 filter 내용을 state에 반영
     // 이렇게 해야, price, continent 2개 checkbox 내용이 동시 반영
     setFilters(newFilters);
   }, []);
+  console.log("Filters", Filters);
 
   // Search Function
   const updateSearchTerm = (newSearchTerm: string) => {
     let body = {
       skip: 0, // DB에서 처음부터 가져오기
-      filter: Filters, // 위의 state에 있는 filter로 ( 즉, 대륙, types에 대한 조건이 입력되어있을 텐데 ,이러한 조건들에 합하여 검색 단어까지 조합하기 )
+      filters: Filters, // 위의 state에 있는 filter로 ( 즉, 대륙, types에 대한 조건이 입력되어있을 텐데 ,이러한 조건들에 합하여 검색 단어까지 조합하기 )
       limit: Limit,
       searchTerm: newSearchTerm,
     };
@@ -204,15 +201,9 @@ const Albums = memo(() => {
           </Row>
 
           {/* Search */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              margin: "1rem auto",
-            }}
-          >
+          <SearchBoxContainer>
             <SearchBox refreshFunction={updateSearchTerm} />
-          </div>
+          </SearchBoxContainer>
           {twoAlbumsAtOne &&
             twoAlbumsAtOne.map(
               (AlbumIntroData: Array<AlbumIntroDataType>, idx: number) => {
@@ -221,10 +212,10 @@ const Albums = memo(() => {
             )}
         </Container>
         {PostSize >= Limit && (
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <BtnContainer>
             {/* button을 클릭하면 loadMoreHandler이라는 함수를 실행한다 */}
             <button onClick={loadMoreHandler}>더보기</button>
-          </div>
+          </BtnContainer>
         )}
       </Section>
     </>
@@ -251,6 +242,17 @@ const Heading = styled.div`
   @media screen and (max-width: 768px) {
     text-align: start;
   }
+`;
+
+const SearchBoxContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem auto;
+`;
+
+const BtnContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 const InfoRow = styled.div`
   display: flex;

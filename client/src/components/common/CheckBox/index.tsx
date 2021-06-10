@@ -17,30 +17,20 @@ const CheckBoxComponent = memo(
   ({ type, list, handleFilters }: CheckBoxPros) => {
     // Checkbox의 체크된 애들의 목록 ex.1 번 체크하면 여기에 들어간다 / ex. 1,2,3 체크하면 [1,2,3] 이런 식으로 들어가게 된다
     const [Checked, setChecked] = useState<Array<string>>([]);
-
     // check여부를 컨트롤하게 해주는 부분
     const handleToggle = (val: string) => {
       // Checked State Array 상에서 누른 대륙 요소의 index를 구하고
       // 만일 해당 값이 array에 없다면 -1을 반환한다
       const currentIndex = Checked.indexOf(val);
-
       const newChecked = [...Checked];
-      console.log("before checked", newChecked);
-
       // 전체 checked 된 state에서, 현재 누른 checkbox가
       // 없다면, state에 넣어준다
       if (currentIndex === -1) {
-        console.log("insert new");
-        console.log("val", val);
-        console.log("before newChecked", newChecked);
         newChecked.push(val);
-        console.log("after newChecked", newChecked);
       } else {
         // 만일 있다면 빼준다
-        console.log("delete old");
         newChecked.splice(currentIndex, 1);
       }
-      console.log("after checked", newChecked);
       // 새로나온 newChecked를 넣어준다
       setChecked(newChecked);
       // 부모 컴포넌트에게 해당 checked 정보를 넘겨준다
