@@ -132,13 +132,11 @@ const Albums = () => {
     return array;
   };
 
-  const handleFilters = (filters: string[], category: string) => {
+  const handleFilters = (filters: any, category: string) => {
     // filters는 CheckBox 자식 component에서 props를 통해 넘겨주는, 체크된 애들의 목록 및 정보( id )
     const newFilters = { ...Filters };
-
     // CheckBox.js에서 새로운 check된 항목들을 여기에 가져오는 것이다
     newFilters[category] = filters;
-
     // if (category == "price") {
     //   // category가 price일 때는
     //   // filters에 숫자들이 들어있을 것이다
@@ -148,9 +146,7 @@ const Albums = () => {
     //   // newFilters의 price 항목에 대해 priceValues 라는 값과 관련된 항목을 넣어주는 것이다
     //   newFilters[category] = priceValues; // newFilters["price"] 이렇게 될 것이다
     // }
-
     showFilteredResults(newFilters);
-
     // 우리가 새롭게 바꾼 filter 내용을 state에 반영
     // 이렇게 해야, price, continent 2개 checkbox 내용이 동시 반영
     setFilters(newFilters);
@@ -187,47 +183,40 @@ const Albums = () => {
             >
               View Albums
             </h1>
-            <Row gutter={[16, 16]}>
-              <Col lg={12} xs={24}>
-                {/* CheckBox */}
-                {/* Data.js에 있는 대륙 정보들을 list = {years} 로 넘겨준다  */}
-                {/* CheckBox에서 체크된 애들의 list도 부모 component로 가져와야 하고 handleFilters를 통해 실시한다 
-                    "years라고 해준 이유는, 2개 checkbox중에서 대륙에 해당하는 checkbox를 넘겨준 것이다 */}
-                <Checkbox
-                  type={"Years"}
-                  list={albumYearDatas}
-                  handleFilters={(filters: string[]) =>
-                    handleFilters(filters, "years")
-                  }
-                />
-              </Col>
-
-              <Col lg={12} xs={24}>
-                {/* CheckBox */}
-                <Checkbox
-                  type={"Types"}
-                  list={albumTypeDatas}
-                  handleFilters={(filters: string[]) =>
-                    handleFilters(filters, "types")
-                  }
-                />
-              </Col>
-            </Row>
           </Heading>
-
           {/* Filter */}
           {/* years와 types Checkbox가 반반씩 차지하도록 */}
+          <Row gutter={[16, 16]}>
+            <Col lg={12} xs={24}>
+              {/* CheckBox */}
+              {/* Data.js에 있는 대륙 정보들을 list = {years} 로 넘겨준다  */}
+              {/* CheckBox에서 체크된 애들의 list도 부모 component로 가져와야 하고 handleFilters를 통해 실시한다 
+                    "years라고 해준 이유는, 2개 checkbox중에서 대륙에 해당하는 checkbox를 넘겨준 것이다 */}
+              <Checkbox
+                type={"year"}
+                list={albumYearDatas}
+                handleFilters={(filters: string[]) =>
+                  handleFilters(filters, "years")
+                }
+              />
+            </Col>
+
+            <Col lg={12} xs={24}>
+              {/* CheckBox */}
+              <Checkbox
+                type={"type"}
+                list={albumTypeDatas}
+                handleFilters={(filters: string[]) =>
+                  handleFilters(filters, "years")
+                }
+              />
+            </Col>
+          </Row>
 
           {/* Search */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-              margin: "1rem auto",
-            }}
-          >
+          <SearchBoxContainer>
             <SearchBox refreshFunction={updateSearchTerm} />
-          </div>
+          </SearchBoxContainer>
           {twoAlbumsAtOne &&
             twoAlbumsAtOne.map(
               (AlbumIntroData: Array<AlbumIntroDataType>, idx: number) => {
@@ -263,17 +252,13 @@ const Heading = styled.div`
   font-size: 1.5rem;
   padding: 2rem 1rem;
   margin-bottom: 40px;
-
   @media screen and (max-width: 768px) {
     text-align: start;
   }
 `;
-const InfoRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  padding: 1rem 0rem;
 
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-  }
+const SearchBoxContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem auto;
 `;

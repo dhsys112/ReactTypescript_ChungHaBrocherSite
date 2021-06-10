@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 interface ButtonProp {
-  primary?: boolean;
+  primary?: string;
   big?: boolean;
   round?: boolean;
   maxcontrol?: string;

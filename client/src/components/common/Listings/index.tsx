@@ -45,8 +45,8 @@ const Listings = ({ datas }: ListingsProps) => {
             data-aos-anchor-placement="center bottom"
           >
             {/* 살짝 위로 올려준다  */}
-            <Image src={DataTwo.image} alt="home" IsUp={true} />
-            <h2>{DataTwo.title}</h2>
+            <Image src={DataTwo.albumImg} alt="home" IsUp={true} />
+            <h2>{DataTwo.titleSong}</h2>
             <InfoLink to="/">
               <p>View Details</p>
               <Arrow />

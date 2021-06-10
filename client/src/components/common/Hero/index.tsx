@@ -96,7 +96,7 @@ const Hero = memo(({ slides }: HeroProps) => {
                           data-aos-duration="500"
                           data-aos-delay="250"
                           to={`/album/${slide.albumId}`}
-                          primary={true}
+                          primary="true"
                           maxcontrol="true"
                         >
                           {slide.label}

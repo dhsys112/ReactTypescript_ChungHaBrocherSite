@@ -20,7 +20,6 @@ const Pictures = () => {
   // pictComponent는 해당 dom node가 들어오게 된다
   const lastPictElementRef = useCallback(
     (pictComponent) => {
-      console.log("lastBook Element");
       // observer가 존재한다면 , disconnect -> 왜 ? reconnect할 것이기 때문
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
@@ -47,7 +46,7 @@ const Pictures = () => {
                 key={picture.idx}
                 ref={lastPictElementRef}
                 IsOdd={idx % 2 ? false : true}
-                Image={picture}
+                Image={picture.src}
               />
             );
           } else {
@@ -55,7 +54,7 @@ const Pictures = () => {
               <SinglePicture
                 key={picture.idx}
                 IsOdd={idx % 2 ? false : true}
-                Image={picture}
+                Image={picture.src}
               />
             );
           }

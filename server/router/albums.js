@@ -68,7 +68,7 @@ router.post('/albums', (req,res) => {
 
     }else{
         // 검색 단어가 없을 때
-        
+        console.log("findArgs",findArgs)
         // Product collection에 들어있는 모든 상품 정보 가져오기
         Album.find(findArgs)// findArgs에 맞는 정보만 db 에서 가져오기 >> findArgs가 적용되기 위해서는 당연히 product schema에 cotinents 정보가 있어야 한다
         .skip(skip) // 처음 ~번째 부터 8개( limit의 수 만큼 ) 가져와

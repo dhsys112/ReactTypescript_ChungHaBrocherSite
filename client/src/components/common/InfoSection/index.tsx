@@ -27,7 +27,7 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/" primary={true}>
+          <Button to="/" primary="true">
             {buttonLabel ? buttonLabel : ""}
           </Button>
         </ColumnLeft>

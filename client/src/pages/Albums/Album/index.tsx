@@ -3,7 +3,7 @@ import Hero from "components/common/Hero";
 import InfoSection from "components/common/InfoSection";
 import Video from "components/Video";
 import { RouteComponentProps } from "react-router-dom";
-import { ImageInfoType, InfosectionProps } from "assets/data/types";
+import { ImageInfoType, InfoSectionProps } from "assets/data/types";
 import Axios from "axios";
 import { refineAlbumIntroInfo, refineAlbumImgInfo } from "utils/refine";
 
@@ -15,7 +15,7 @@ const SingleAlbumPageContainer: React.FC<RouteComponentProps<MatchParams>> = ({
   match,
 }) => {
   const [albumImg, setAlbumImg] = useState<Array<ImageInfoType>>([]);
-  const [albumInfo, setAlbumInfo] = useState<InfosectionProps>();
+  const [albumInfo, setAlbumInfo] = useState<InfoSectionProps>();
   let { albumId } = match.params;
   const body = { albumId: albumId };
 
@@ -30,7 +30,7 @@ const SingleAlbumPageContainer: React.FC<RouteComponentProps<MatchParams>> = ({
   return (
     <>
       <Hero slides={albumImg && albumImg} />;
-      <InfoSection {...albumInfo} />
+      <InfoSection {...albumInfo!} />
       {/* <Video videoId={album.videoId} /> */}
     </>
   );

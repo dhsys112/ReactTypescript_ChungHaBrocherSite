@@ -23,7 +23,6 @@ const InfoRow = styled.div`
   display: flex;
   flex-direction: row;
   padding: 1rem 0rem;
-
   @media screen and (max-width: 768px) {
     flex-direction: column;
   }
