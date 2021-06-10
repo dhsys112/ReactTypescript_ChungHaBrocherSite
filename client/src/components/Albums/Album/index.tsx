@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/macro";
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundForward } from "react-icons/io";
 import { AlbumIntroDataType } from "assets/data/types";
@@ -9,7 +9,7 @@ interface OneAlbumProp {
   first: boolean;
 }
 
-const OneAlbum = ({ AlbumData, first }: OneAlbumProp) => {
+const OneAlbum = memo(({ AlbumData, first }: OneAlbumProp) => {
   // console.log("Intro Page Single Album Id", AlbumData.id);
   return (
     <>
@@ -34,7 +34,7 @@ const OneAlbum = ({ AlbumData, first }: OneAlbumProp) => {
       </InfoWrap>
     </>
   );
-};
+});
 
 const InfoWrap = styled.div`
   padding: 2rem 0rem;

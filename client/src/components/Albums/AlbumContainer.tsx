@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { IoMdArrowRoundForward } from "react-icons/io";
@@ -8,7 +8,7 @@ import { AlbumIntroDataType } from "assets/data/types";
 interface AlbumContainerProp {
   datas: Array<AlbumIntroDataType>;
 }
-const AlbumContainer = ({ datas }: AlbumContainerProp) => {
+const AlbumContainer = memo(({ datas }: AlbumContainerProp) => {
   let DataOne = datas[0];
   let DataTwo = datas[1];
   return (
@@ -17,7 +17,7 @@ const AlbumContainer = ({ datas }: AlbumContainerProp) => {
       <OneAlbum AlbumData={DataTwo} first={false} />
     </InfoRow>
   );
-};
+});
 
 const InfoRow = styled.div`
   display: flex;
