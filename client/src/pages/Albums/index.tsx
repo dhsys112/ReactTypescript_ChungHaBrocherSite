@@ -88,10 +88,13 @@ const Albums = memo(() => {
   };
 
   const loadMoreHandler = () => {
+    console.log("Before skip", Skip);
     let skip = Skip + Limit;
+    console.log("After skip", skip);
     let body = {
       skip: skip,
-      limit: Limit, // Limit은 8로 같다
+      filters: Filters,
+      limit: Limit, // Limit은 4로 같다
       loadMore: true, // 더보기 버튼을 눌렀을 때 보내는 정보라는 것을 알려주는 것
     };
     getAlbums(body);
