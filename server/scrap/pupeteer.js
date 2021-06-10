@@ -80,13 +80,16 @@ const scrapSongDesicription = async (albumResults,artistNm) => {
                     if(!songArtist.includes(artistNm)) return 
                     const songTitle  = $(elem).find('.ellipsis:nth-child(1) > span > a').text()
                     const songId     = album.albumName + '_' + songTitle
-                    console.log("songTitle",songTitle)
+                    const songDate   = album.albumOpenDate
+                    const songYear   = album.albumYear
                     const songLikes  = $(elem).find('td:nth-child(5) > div > button > span.cnt').text().trim().match(/\d+/g)[0]
                     $('.button_etc.like > span.cnt > span').remove()
                     const song = {
                         songId,
                         songTitle, 
                         songArtist,
+                        songDate,
+                        songYear,
                         songLikes,
                         songImg,
                         album:album.albumName
