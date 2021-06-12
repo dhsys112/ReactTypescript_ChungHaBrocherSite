@@ -8,12 +8,23 @@ const nightmare = Nightmare({show : true})
 const puppeteer = require('puppeteer')
 const path       = require('path')
 const dotenv     = require('dotenv')
+const ObjectsToCsv = require('objects-to-csv') 
 dotenv.config({path:path.join(__dirname,'../../.env')})
 
 let browser;
 async function sleep(miliseconds){
     return new Promise(resolve=>setTimeout(resolve,miliseconds))
 }
+
+async function createCsvFile(data){
+    // data : array of objects
+     let csv = new ObjectsToCsv(data)
+    // save to file
+    await csv.toDisk('./test.csv')
+    // return csv file as string
+    console.log(await csv.toString())
+ 
+ }
 
 async function connectToMongoDb(){
     await mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true })
@@ -134,9 +145,10 @@ const scrapeAlbumLists = async () => {
     for(let pgIdx = 1 ; pgIdx < 47; pgIdx = pgIdx + 15){
         const [albumResults,artistNm] = await scrapeAlbumDescription(pgIdx,albumPage);
         const albumsFullData    = await scrapSongDesicription(albumResults,artistNm)
-        console.log("\n")
-        await insertAlbumInMongoDB(albumsFullData)
-        await sleep(1000)
+        await createCsvFile(albumsFullData)
+        // console.log("\n")
+        // await insertAlbumInMongoDB(albumsFullData)
+        // await sleep(1000)
     }
     mongoose.disconnect();
     console.log("album save complete !!")

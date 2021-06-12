@@ -5,8 +5,9 @@ const {Album} = require('../model/Albums')
 const {Song}  = require('../model/Songs')
 const path       = require('path')
 const dotenv     = require('dotenv')
+const ObjectsToCsv = require('objects-to-csv') // 크롤링 결과를 csv로 
 dotenv.config({path:path.join(__dirname,'../../.env')})
-
+ 
 
 async function sleep(miliseconds){
     return new Promise(resolve=>setTimeout(resolve,miliseconds))
@@ -116,9 +117,10 @@ const scrapeAlbumLists = async () => {
         const [albumResults,artistNm] = await scrapeAlbumDescription(pgIdx);
         const albumsFullData    = await scrapSongDesicription(albumResults,artistNm)
         // console.log("albumsFullData",albumsFullData)
-        console.log("pgIdx",pgIdx)
-        await insertAlbumInMongoDB(albumsFullData)
-        await sleep(1000)
+        await createCsvFile(albumsFullData)
+        // console.log("pgIdx",pgIdx)
+        // await insertAlbumInMongoDB(albumsFullData)
+        // await sleep(1000)
     }
     mongoose.disconnect();
     console.log("album save complete !!")
