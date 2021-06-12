@@ -46,7 +46,7 @@ const Pictures = () => {
                 key={picture.idx}
                 ref={lastPictElementRef}
                 IsOdd={idx % 2 ? false : true}
-                Image={picture.src}
+                Image={picture}
               />
             );
           } else {
@@ -54,7 +54,7 @@ const Pictures = () => {
               <SinglePicture
                 key={picture.idx}
                 IsOdd={idx % 2 ? false : true}
-                Image={picture.src}
+                Image={picture}
               />
             );
           }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Hero from "components/common/Hero";
 import Axios from "axios";
 import { ImageInfoType } from "assets/data/types";
+import styled from "styled-components/macro";
 import { refineAlbumIntroInfo, refineAlbumImgInfo } from "utils/refine";
 import InfoSection from "components/common/InfoSection";
 import Listings from "components/common/Listings";
@@ -47,6 +48,7 @@ const Home = () => {
   return (
     <>
       <Hero slides={albums} />
+      <SongsHeading>Recent 6 Albums</SongsHeading>
       {albums[0] &&
         albums.map((album) => <InfoSection {...refineAlbumIntroInfo(album)} />)}
       {/*{albumListings &&
@@ -59,5 +61,13 @@ const Home = () => {
     </>
   );
 };
+
+export const SongsHeading = styled.div`
+  font-size: 2.5rem;
+  padding: 1rem 1rem;
+  @media screen and (max-width: 768px) {
+    text-align: start;
+  }
+`;
 
 export default Home;
