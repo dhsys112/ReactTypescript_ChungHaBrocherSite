@@ -50,3 +50,15 @@ export const refineSongData = (song: any) => {
 };
 
 export const refineSongDatas = (songs:any) => songs.map((song: any) => refineSongData(song))
+
+export const refineAlbumSongData = (song: any) => {
+  return {
+    img: song.songImg,
+    albumName: song.album,
+    songTitle: song.songTitle,
+    paragraph1: "",
+    paragraph2: "",
+  };
+};
+
+export const refineAlbumSongDatas = (songs:any) => songs.map((song: any) => refineSongData(song))
