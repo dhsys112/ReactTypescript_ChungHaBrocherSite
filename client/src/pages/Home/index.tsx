@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Hero from "components/common/Hero";
 import Axios from "axios";
-import { ImageInfoType } from "assets/data/types";
+import { ImageInfoType, SongType } from "assets/data/types";
 import styled from "styled-components/macro";
-import { refineAlbumIntroInfo, refineAlbumImgInfo } from "utils/refine";
+import { refineAlbumIntroInfo, refineSongDatas } from "utils/refine";
 import InfoSection from "components/common/InfoSection";
 import Listings from "components/common/Listings";
 import Features from "components/common/Features";
@@ -20,6 +20,7 @@ const sliceByTwo = (albums: any, length: number) => {
 
 const Home = () => {
   const [albums, setAlbums] = useState<Array<ImageInfoType>>([]);
+  const [songs, setSongs] = useState<Array<SongType>>();
   // const albumListings = sliceByTwo(albums, albums.length).map((elems) =>
   //   elems.map((elem) => refineAlbumImgInfo(elem)[0])
   // );
@@ -38,19 +39,51 @@ const Home = () => {
   useEffect(() => {
     Axios.post("/api").then((res) => {
       // 최신 6개 앨범
+      console.log("albums", res.data.albums);
       const albumLists = res.data.albums.map(
         ({ ...rest }, songNums: any, songs: any) => rest
       );
       setAlbums(albumLists);
+      setSongs(refineSongDatas(res.data.songInfos));
     });
   }, [setAlbums]);
 
   return (
     <>
       <Hero slides={albums} />
-      <SongsHeading>Recent 6 Albums</SongsHeading>
+      <Heading
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        data-aos-once="true"
+        data-aos-anchor-placement="center bottom"
+      >
+        Recent 6 Albums
+      </Heading>
       {albums[0] &&
         albums.map((album) => <InfoSection {...refineAlbumIntroInfo(album)} />)}
+      <Heading
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        data-aos-once="true"
+        data-aos-anchor-placement="center bottom"
+      >
+        Top 6 Songs
+      </Heading>
+      {songs &&
+        songs.map((song, idx) => {
+          return (
+            <Features
+              key={idx}
+              IsOdd={idx % 2 == 0}
+              routeIdx={idx}
+              img={song.img}
+              album={song.albumName}
+              song={song.songTitle}
+              paragraph1={song.paragraph1}
+              paragraph2={song.paragraph2}
+            />
+          );
+        })}
       {/*{albumListings &&
         albumListings[0] &&
         albumListings.map((albumList) => {
@@ -62,7 +95,7 @@ const Home = () => {
   );
 };
 
-export const SongsHeading = styled.div`
+export const Heading = styled.div`
   font-size: 2.5rem;
   padding: 1rem 1rem;
   @media screen and (max-width: 768px) {
