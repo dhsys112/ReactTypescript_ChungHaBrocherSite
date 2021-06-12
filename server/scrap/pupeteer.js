@@ -102,9 +102,9 @@ const scrapSongDesicription = async (albumResults,artistNm) => {
             })
             album.songs = songLists
             // 3) to JSON
-            return JSON.stringify(album)
-            // 2) to MongoDB
             // return JSON.stringify(album)
+            // 2) to MongoDB
+            return album
         })
     )
 }
