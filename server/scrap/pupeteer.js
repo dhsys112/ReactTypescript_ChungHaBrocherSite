@@ -4,11 +4,11 @@ const cherrio    = require('cheerio')
 const {Album} = require('../model/Albums')
 const {Song}  = require('../model/Songs')
 const Nightmare = require('nightmare')
-const nightmare = Nightmare({show : true})
 const puppeteer = require('puppeteer')
 const path       = require('path')
 const dotenv     = require('dotenv')
 const ObjectsToCsv = require('objects-to-csv') 
+const fs = require('fs')
 dotenv.config({path:path.join(__dirname,'../../.env')})
 
 let browser;
@@ -16,15 +16,7 @@ async function sleep(miliseconds){
     return new Promise(resolve=>setTimeout(resolve,miliseconds))
 }
 
-async function createCsvFile(data){
-    // data : array of objects
-     let csv = new ObjectsToCsv(data)
-    // save to file
-    await csv.toDisk('./test.csv')
-    // return csv file as string
-    console.log(await csv.toString())
- 
- }
+
 
 async function connectToMongoDb(){
     await mongoose.connect(process.env.MONGODB_URL,{ useNewUrlParser: true })
@@ -114,6 +106,7 @@ const scrapSongDesicription = async (albumResults,artistNm) => {
     )
 }
 
+// insert single song into MongoDB
 const insertSongInMongoDB = async (songArray) => {
     const songs = songArray.map(async song => {
         const songFromDb = await Song.findOne({songId:song.songId})
@@ -125,6 +118,18 @@ const insertSongInMongoDB = async (songArray) => {
     await Promise.all(songs)
 }
 
+// write CSV file
+async function createCsvFile(data){
+    // data : array of objects
+     let csv = new ObjectsToCsv(data)
+    // save to file
+    await csv.toDisk('./test.csv')
+    // return csv file as string
+    console.log(await csv.toString())
+ 
+ }
+
+ // insert single album into MongoDB
 const insertAlbumInMongoDB = async (albumArray) => {
     const albums = albumArray.map(async album => {
         const albumFromDb = await Album.findOne({albumId:album.albumId})
@@ -139,17 +144,25 @@ const insertAlbumInMongoDB = async (albumArray) => {
 }
 
 const scrapeAlbumLists = async () => {
+    console.log("start")
     browser = await puppeteer.launch({headless: false});
     const albumPage = await browser.newPage()
+    // 3) to JSON
+    const albumsJsonArr = []
     await connectToMongoDb()
     for(let pgIdx = 1 ; pgIdx < 47; pgIdx = pgIdx + 15){
         const [albumResults,artistNm] = await scrapeAlbumDescription(pgIdx,albumPage);
         const albumsFullData    = await scrapSongDesicription(albumResults,artistNm)
-        await createCsvFile(albumsFullData)
-        // console.log("\n")
+        // 3) to JSON
+        albumsJsonArr.push(JSON.stringify(albumsFullData))
+        // 1) to CSV
+        // await createCsvFile(albumsFullData) : 
+        // 2) to MongoDB
         // await insertAlbumInMongoDB(albumsFullData)
         // await sleep(1000)
     }
+    // 3) to JSON
+    fs.writeFileSync('album-json.json',albumsJsonArr)
     mongoose.disconnect();
     console.log("album save complete !!")
     browser.close()

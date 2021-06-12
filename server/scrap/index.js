@@ -5,7 +5,7 @@ const {Album} = require('../model/Albums')
 const {Song}  = require('../model/Songs')
 const path       = require('path')
 const dotenv     = require('dotenv')
-const ObjectsToCsv = require('objects-to-csv') // 크롤링 결과를 csv로 
+// 크롤링 결과를 csv로 
 dotenv.config({path:path.join(__dirname,'../../.env')})
  
 
