@@ -101,7 +101,10 @@ const scrapSongDesicription = async (albumResults,artistNm) => {
                 }
             })
             album.songs = songLists
-            return album
+            // 3) to JSON
+            return JSON.stringify(album)
+            // 2) to MongoDB
+            // return JSON.stringify(album)
         })
     )
 }
@@ -148,13 +151,13 @@ const scrapeAlbumLists = async () => {
     browser = await puppeteer.launch({headless: false});
     const albumPage = await browser.newPage()
     // 3) to JSON
-    const albumsJsonArr = []
+    let albumsJsonArr = []
     await connectToMongoDb()
     for(let pgIdx = 1 ; pgIdx < 47; pgIdx = pgIdx + 15){
         const [albumResults,artistNm] = await scrapeAlbumDescription(pgIdx,albumPage);
         const albumsFullData    = await scrapSongDesicription(albumResults,artistNm)
         // 3) to JSON
-        albumsJsonArr.push(JSON.stringify(albumsFullData))
+        albumsJsonArr= [...albumsJsonArr,...albumsFullData]
         // 1) to CSV
         // await createCsvFile(albumsFullData) : 
         // 2) to MongoDB
@@ -162,7 +165,7 @@ const scrapeAlbumLists = async () => {
         // await sleep(1000)
     }
     // 3) to JSON
-    fs.writeFileSync('album-json.json',albumsJsonArr)
+    fs.writeFileSync('album-json.json',JSON.stringify(albumsJsonArr))
     mongoose.disconnect();
     console.log("album save complete !!")
     browser.close()
