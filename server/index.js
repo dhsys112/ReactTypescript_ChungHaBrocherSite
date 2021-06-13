@@ -26,6 +26,18 @@ app.use('/api/album/', albums)
 const songs = require('./router/songs')
 app.use('/api/song/', songs)
 
-const server = app.listen(5000,function(){
+// production set
+if(process.env.NODE_ENV == 'production'){
+  // set static folder
+  app.use(express.static('client/build'))
+  // indet.html for all page routes
+  app.get('*',(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'../client','build','index.html'))
+  })
+}
+
+const port = process.env.PORT || 5000
+
+const server = app.listen(port,function(){
   console.log("Server has started on port 5000");
 });
