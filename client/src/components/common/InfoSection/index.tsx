@@ -11,6 +11,7 @@ const InfoSection = ({
   reverse,
   image,
   delay,
+  id,
 }: InfoSectionProps) => {
   return (
     <Section>
@@ -27,7 +28,7 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/" primary="true">
+          <Button to={`/album/${id}`} primary="true">
             {buttonLabel ? buttonLabel : ""}
           </Button>
         </ColumnLeft>

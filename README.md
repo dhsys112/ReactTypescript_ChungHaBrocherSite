@@ -60,6 +60,10 @@ You can apply filters
 
 displaying single Album
 
+![](./readmeImg/albums_songs.png)
+
+you can also see the song list in according album
+
 <br/>
 <br/>
 

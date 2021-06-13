@@ -23,6 +23,7 @@ export interface InfoSectionProps {
     reverse: boolean;
     image: string | undefined;
     delay: number;
+    id : number 
   }
 
 export interface ImageInfoType {

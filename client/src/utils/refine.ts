@@ -2,16 +2,17 @@ import { AlbumIntroDataType } from "assets/data/types";
 
 export const refineAlbumIntroInfo = (album: any) => {
     return {
-      heading: album.albumName,
+      heading     : album.albumName,
       paragraphOne: "",
       // paragraphOne: album.paragraphOne,
       paragraphTwo: "",
       // paragraphTwo: album.paragraphTwo,
-      buttonLabel: `View ${album.albumName}`,
-      image: album.albumImg,
+      buttonLabel : `View ${album.albumName}`,
+      image       : album.albumImg,
       // reverse: album.id! % 2 ? true : false,
-      reverse: true,
-      delay: 100,
+      reverse     : true,
+      delay       : 100,
+      id          : album.albumId
     };
   };
 
