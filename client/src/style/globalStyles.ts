@@ -9,9 +9,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    overflow-x: hidden;
     cursor: none;
   }
+  body{overflow-x:hidden}
 `;
 
 export default GlobalStyle;

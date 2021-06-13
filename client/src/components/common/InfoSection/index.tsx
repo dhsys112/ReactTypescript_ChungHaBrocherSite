@@ -27,7 +27,7 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/" primary={true}>
+          <Button to="/" primary="true">
             {buttonLabel ? buttonLabel : ""}
           </Button>
         </ColumnLeft>
@@ -50,14 +50,14 @@ const InfoSection = ({
 const Section = styled.section`
   width: 100%;
   height: 100%;
-  padding: 2rem 0rem;
+  padding: 1rem 0rem;
 `;
 
 const Container = styled.div`
-  padding: 3rem calc((100vw - 1300px) / 2);
+  padding: 1rem calc((100vw - 1300px) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 800px;
+  grid-template-rows: 600px;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -101,7 +101,7 @@ const ColumnRight = styled.div<ColumnProps>`
     width: 100%;
     height: 100%;
     object-fit: contain;
-
+    max-width: 400px;
     @media screen and (max-width: 768px) {
       width: 90%;
       height: 90%;

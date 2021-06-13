@@ -12,6 +12,7 @@ import SingleAlbum from "pages/Albums/Album";
 import Pictures from "pages/Pictures";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import "antd/dist/antd.css";
 
 // routes array
 const routes = [

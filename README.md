@@ -41,6 +41,18 @@ displaying All Lists of Albums
 with Scrolls
 
 <br/>
+
+![](./readmeImg/albums_search.png)
+
+You can search albums by it's name
+
+<br/>
+
+![](./readmeImg/albums_filter.png)
+
+You can apply filters
+
+<br/>
 <br/>
 
 ### 3) Single Album Page
@@ -64,6 +76,18 @@ randomly
 ![](./readmeImg/songs.png)
 
 displaying songs Lists
+
+<br/>
+
+![](./readmeImg/songs_filter.png)
+
+You can apply filters
+
+<br/>
+
+![](./readmeImg/songs_search.png)
+
+You can apply search funcs
 
 <br/>
 <br/>

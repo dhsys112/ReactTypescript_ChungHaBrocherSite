@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 interface ButtonProp {
-  primary?: boolean;
+  primary?: string;
   big?: boolean;
   round?: boolean;
   maxcontrol?: string;
@@ -13,8 +13,8 @@ export const Button = styled(Link)<ButtonProp>`
   white-space: nowrap;
   outline: none;
   border: none;
-  min-width: 100px;
-  max-width: ${({ maxcontrol }) => (maxcontrol == "true" ? "160px" : "200px")};
+  width: fit-content;
+  max-width: ${({ maxcontrol }) => (maxcontrol == "true" ? "160px" : "250px")};
   cursor: pointer;
   text-decoration: none;
   transition: 0.3s;

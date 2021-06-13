@@ -122,14 +122,14 @@ const Hero = memo(({ slides }: HeroProps) => {
   );
 });
 
-export const HeroSection = memo(styled.section`
+export const HeroSection = styled.section`
   height: 100vh;
   max-height: 1100px;
   position: relative;
   overflow: hidden;
-`);
+`;
 
-export const HeroWrapper = memo(styled.div`
+export const HeroWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -137,17 +137,17 @@ export const HeroWrapper = memo(styled.div`
   align-items: center;
   overflow: hidden;
   position: relative;
-`);
+`;
 
 // 한장의 slide 에 대한 전체 wrapper
-export const HeroSlide = memo(styled.div`
+export const HeroSlide = styled.div`
   z-index: 1;
   width: 100%;
   height: 100%;
-`);
+`;
 
 // 일부 slide 에 대한 Slide
-const HeroSlider = memo(styled.div`
+const HeroSlider = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -176,11 +176,11 @@ const HeroSlider = memo(styled.div`
       rgba(0, 0, 0, 0.6) 100%
     );
   }
-`);
+`;
 
 // framer-motion 적용을 위해 일반 img가 아니라
 // motion.img로 바꿔야 한다
-const HeroImage = memo(styled(motion.img)`
+const HeroImage = styled(motion.img)`
   position: absolute;
   top: 0;
   left: 0;
@@ -189,8 +189,8 @@ const HeroImage = memo(styled(motion.img)`
   // object-fit : (img),(video) 같은 콘텐츠 크기를
   // 어떤 방식으로 조절하여, 요소에 맞출 것인가
   // cover : 세로,가로비 유지하여, 전체 채운다 (일부 잘릴 수 있다)
-  object-fit: cover;
-`);
+  object-fit: contain;
+`;
 
 const HeroContent = styled.div`
   position: relative;
@@ -220,9 +220,9 @@ const HeroContent = styled.div`
   }
 `;
 
-const Arrow = memo(styled(IoMdArrowRoundForward)`
+const Arrow = styled(IoMdArrowRoundForward)`
   margin-left: 0.5rem;
-`);
+`;
 
 const ScrollDownCssDiv = styled.div`
   position: absolute;
