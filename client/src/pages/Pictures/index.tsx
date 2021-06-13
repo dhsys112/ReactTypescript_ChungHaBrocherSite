@@ -43,18 +43,18 @@ const Pictures = () => {
           if (pictures.length === idx + 1) {
             return (
               <SinglePicture
-                key={picture.idx}
+                key={picture}
                 ref={lastPictElementRef}
                 IsOdd={idx % 2 ? false : true}
-                Image={picture}
+                src={picture}
               />
             );
           } else {
             return (
               <SinglePicture
-                key={picture.idx}
+                key={picture}
                 IsOdd={idx % 2 ? false : true}
-                Image={picture}
+                src={picture}
               />
             );
           }

@@ -2,6 +2,10 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "engine": {
+    "node": "v12.18.2",
+    "npm": "6.14.11"
+  },
   "dependencies": {
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.9",

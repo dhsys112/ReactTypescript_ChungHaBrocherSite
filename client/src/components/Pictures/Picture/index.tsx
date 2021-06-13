@@ -4,18 +4,18 @@ import { motion } from "framer-motion";
 import { ImageDataType } from "assets/data/types";
 
 interface SinglePictureProps {
-  Image: string;
+  src: string;
   IsOdd: boolean;
 }
 
 const SinglePicture = memo(
   forwardRef<IntersectionObserver, SinglePictureProps>(
-    ({ Image, IsOdd = true }, ref) => {
+    ({ src, IsOdd = true }, ref) => {
       return (
         <PictureContainer odd={IsOdd} ref={ref}>
           <SingleImage
-            src={Image}
-            alt={Image}
+            src={src}
+            alt={src}
             initial="hidden"
             animate="visible"
             exit="exit"

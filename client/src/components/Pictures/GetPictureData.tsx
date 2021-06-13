@@ -5,7 +5,7 @@ import Axios from "axios";
 export default function GetPictureData(pictureNum: number) {
   const [loading, setLoading] = useState(true);
   const [pictureDatas, setPictureDatas] = useState<Array<any>>([]);
-  const [pictures, setPictures] = useState<Array<ImageDataType>>([]);
+  const [pictures, setPictures] = useState<Array<string>>([]);
   const [curPictNum, setCurPictNum] = useState(0);
   const [hasMore, setHasMore] = useState(false);
   const PictureDatasLength = pictureDatas.length;
