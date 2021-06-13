@@ -9,6 +9,8 @@
   "dependencies": {
     "@types/react-icons": "^3.0.0",
     "@types/styled-components": "^5.1.9",
+    "@types/aos": "^3.0.3",
+    "@types/react-router-dom": "^5.1.7",
     "antd": "^3.24.1",
     "aos": "^2.3.4",
     "axios": "^0.19.2",
@@ -53,8 +55,7 @@
     ]
   },
   "devDependencies": {
-    "@types/aos": "^3.0.3",
-    "@types/react-router-dom": "^5.1.7",
+    
     "http-proxy-middleware": "^1.0.3"
   }
 }
