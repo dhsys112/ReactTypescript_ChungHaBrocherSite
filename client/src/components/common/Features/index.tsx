@@ -34,7 +34,7 @@ const Features = ({
             >
               <h1>{song}</h1>
               <p>{album}</p>
-              <Button to={`/album/${routeIdx}`}>Learn More</Button>
+              <Button to={`/`}>Learn More</Button>
             </Content>
           </ColumnLeft>
           <ColumnRight IsOdd={IsOdd}>

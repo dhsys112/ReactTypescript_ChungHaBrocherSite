@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import styled from "styled-components";
 
 const CustomCursor = () => {
-  console.log("custom cursor");
   const cursorRef = useRef<HTMLDivElement>(null);
   const cursorRefFollow = useRef<HTMLDivElement>(null);
   const cursorPosChange = (event: MouseEvent) => {

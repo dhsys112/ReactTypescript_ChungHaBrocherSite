@@ -87,7 +87,6 @@ const HitSongs = () => {
     setSkip(0);
   };
 
-  console.log("entire Filter", Filters);
   const handleFilters = (filters: any, category: string) => {
     // filters는 CheckBox 자식 component에서 props를 통해 넘겨주는, 체크된 애들의 목록 및 정보( id )
 

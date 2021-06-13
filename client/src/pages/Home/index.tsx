@@ -21,20 +21,6 @@ const sliceByTwo = (albums: any, length: number) => {
 const Home = () => {
   const [albums, setAlbums] = useState<Array<ImageInfoType>>([]);
   const [songs, setSongs] = useState<Array<SongType>>();
-  // const albumListings = sliceByTwo(albums, albums.length).map((elems) =>
-  //   elems.map((elem) => refineAlbumImgInfo(elem)[0])
-  // );
-
-  /*
-    albumName  : string
-    artistNm   : string
-    albumUrl     : string
-    label    : string
-    titleSong : string , 
-    albumImg    : string | undefined
-    alt      : string 
-    albumOpenDate : Date
-  */
 
   useEffect(() => {
     Axios.post("/api").then((res) => {
