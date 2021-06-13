@@ -46,9 +46,8 @@ interface SingleImageProps {
   odd: boolean;
 }
 const SingleImage = styled(motion.img)<SingleImageProps>`
-  width: 60%;
-  // max-width :500px;
-  height: 70vh;
+  width: 30%;
+  height: 50vh;
   object-fit: cover;
   margin: 2vh 0;
   margin-left: ${({ odd }) => (odd ? "5%" : "0%")};
